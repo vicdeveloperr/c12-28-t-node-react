@@ -8,20 +8,39 @@ const Home = () => {
     count: state.count,
     title: state.title,
   }));
+
+let valores: Object[] = [];
+
+  const ver = async () => {
+   await fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(json => valores = json);
+    console.log(valores);
+  };
+
   return (
     <div className="w-screen h-screen bg-neutral-700 flex flex-row">
       <NavBar />
 
       <div className="w-screen h-auto bg-neutral-700 flex flex-col ">
       <TopBar/>
-      <h1 className="text-3xl font-bold ">
-        Hello world!
-        <h1>count: {values.count}</h1>
-        <h1>title: {values.title}</h1>
-      </h1>
+      <div>
+
+    <h1>aca los json</h1>
+
+{/*  {
+  valores.map((el)=>{
+    return (
+    )
+  })
+} */} 
+
       </div>
 
 
+
+<button onClick={()=>ver()}>VER</button>
+      </div>
 
     </div>
   );
