@@ -9,9 +9,10 @@ const Home = () => {
     title: state.title,
   }));
   return (
-    <div className="w-full h-screen bg-neutral-700 flex flex-row">
+    <div className="w-screen h-screen bg-neutral-700 flex flex-row">
       <NavBar />
-      <div className="w-auto h-auto bg-neutral-700 flex flex-col ">
+
+      <div className="w-screen h-auto bg-neutral-700 flex flex-col ">
       <TopBar/>
       <h1 className="text-3xl font-bold ">
         Hello world!
@@ -19,6 +20,9 @@ const Home = () => {
         <h1>title: {values.title}</h1>
       </h1>
       </div>
+
+
+
     </div>
   );
 };
