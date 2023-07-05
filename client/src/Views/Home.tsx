@@ -1,3 +1,4 @@
+import Cards from "../Components/Cards/Cards";
 import NavBar from "../Components/NavBar/NavBar";
 import TopBar from "../Components/TopBar/TopBar";
 import { useCounterStore } from "../Store/counterStore";
@@ -26,7 +27,7 @@ let valores: Object[] = [];
       <TopBar/>
       <div>
 
-    <h1>aca los json</h1>
+    <Cards />
 
 {/*  {
   valores.map((el)=>{
