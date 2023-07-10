@@ -1,7 +1,10 @@
 import SearchBar from "./SearchBar";
 import { BiCart } from "react-icons/bi";
+import { useNavigate } from "react-router-dom" 
 
 const TopBar = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="flex flex-row w-full bg-black justify-center">
       <div
@@ -14,7 +17,7 @@ const TopBar = () => {
         <div className="cursor-pointer">
         <BiCart size={35} />
         </div>
-        <h4 className="cursor-pointer">Login</h4>
+        <button onClick={ () => navigate("/register")}>Login</button>
       </div>
     </div>
   );
