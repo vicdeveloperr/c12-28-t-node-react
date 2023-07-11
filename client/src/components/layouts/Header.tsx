@@ -1,4 +1,4 @@
-import NavBar from "../common/NavBar/NavBar"
+import NavBar from "../common/NavBar"
 
 function Header() {
     return (
