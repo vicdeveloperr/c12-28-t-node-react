@@ -1,5 +1,15 @@
 @import "tailwindcss/base";
-
 @import "tailwindcss/components";
-
 @import "tailwindcss/utilities";
+
+:root {
+  --primary-color: #ed3e09;
+  --primary-color-light: #fff1f1;
+  --dark-blue: #162a55;
+  --light-blue: #daeeff;
+}
+
+body,
+html {
+  font-family: "Poppins", sans-serif;
+}
