@@ -1,9 +1,10 @@
-import Home from "./Views/Home";
+import "./App.css";
+import HomePage from "./Views/HomePage";
 
 function App() {
   return (
     <>
-      <Home />
+      <HomePage />
     </>
   );
 }
