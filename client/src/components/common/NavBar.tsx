@@ -4,7 +4,9 @@ import SearchBar from "./SearchBar";
 import Container from "./Container";
 
 function NavBar() {
-  let NavBarContent =
+
+  return (
+  <Container>
     <nav className="flex justify-between items-center">
       <h3 className="text-[32px] font-bold">BrandName</h3>
       <SearchBar />
@@ -13,8 +15,9 @@ function NavBar() {
         <FontAwesomeIcon icon={faBars} />
       </div>
     </nav>
+  </Container>
+  );
 
-  return (<Container content={NavBarContent} />);
 }
 
 export default NavBar;
