@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db');
+const Rol = require('../models/Rol');
+const Photo = require('../models/Photo');
 
 const User = db.define('user', {
     idUser: {
@@ -8,7 +10,7 @@ const User = db.define('user', {
         primaryKey: true,
         type: DataTypes.INTEGER,
     },
-    name: {
+    user: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -19,11 +21,35 @@ const User = db.define('user', {
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    phone: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    idUserRol: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    idUserPhoto: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
 },
     {
         timestamps: false
     });
+
+User.belongsTo(Rol, {
+    through: 'idUserRol'
+})
+
+User.belongsTo(Photo, {
+    through: 'idUserPhoto'
+})
 
 module.exports = User;
 
