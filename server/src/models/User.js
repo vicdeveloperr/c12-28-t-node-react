@@ -22,7 +22,11 @@ const User = db.define('user', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    name: {
+    firstName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    lastName: {
         type: DataTypes.STRING,
         allowNull: false
     },
