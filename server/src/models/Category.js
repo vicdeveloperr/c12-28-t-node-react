@@ -1,9 +1,10 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db');
 
-const Category = db.define('category',{
+const Category = db.define('category', {
   idCategory: {
     type: DataTypes.INTEGER,
+    autoIncrement: true,
     allowNull: false,
     primaryKey: true
   },
@@ -20,8 +21,8 @@ const Category = db.define('category',{
     allowNull: true
   }
 },
-{
-  timestamps: false
-});
+  {
+    timestamps: false
+  });
 
 module.exports = Category;
