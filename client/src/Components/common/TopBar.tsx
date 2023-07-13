@@ -1,28 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import Container from "./Container"
 
 function TopBar() {
 
   return (
-    <nav className="px-16 py-4 flex gap-4 justify-between items-center w-full bg-primary-color-light">
-      <Link to="/">
-        <h3 className="font-bold">BrandName</h3>
-      </Link>
+    <Container>
+    <nav className="flex justify-between items-center">
+      <h3 className="text-[32px] font-bold">BrandName</h3>
       <SearchBar />
-      <div className="text-primary-color">
+      <div className="text-[32px] text-primary-color">
         <FontAwesomeIcon className="mr-3 md:hidden" icon={faMagnifyingGlass} />
-        <div className="flex gap-2">
-          <p>
-            <Link to="/login">Login</Link>
-          </p>
-          <p>
-            <Link to="/register">Register</Link>
-          </p>
-        </div>
+        <FontAwesomeIcon icon={faBars} />
       </div>
     </nav>
+  </Container>
   );
 }
 
