@@ -1,7 +1,7 @@
-function Container({ content }: { content: JSX.Element }) {
+function Container({ children }: { children: JSX.Element }) {
     return (
         <div className="w-11/12 m-auto py-3">
-            {content}
+            {children}
         </div>
     );
 }
