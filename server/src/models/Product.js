@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const db = require('../config/db');
 const Category = require('../models/Category');
 const User = require('../models/User');
+const Photo = require('../models/Photo');
 
 const Product = db.define('product', {
   // Defino modelo
@@ -112,7 +113,7 @@ Product.belongsTo(User, {
   foreignKey: 'idUserProduct',
   // sourceKey: 'idCategory'
 });
-Product.belongsToMany(models.Photo, {
+Product.belongsToMany(Photo, {
   through: 'Product_Photo'
 })
 
