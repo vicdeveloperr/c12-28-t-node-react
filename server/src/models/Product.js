@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db');
-const Category = require('../models/Category')
+const Category = require('../models/Category');
+const User = require('../models/User');
 
 const Product = db.define('product', {
   // Defino modelo
@@ -30,12 +31,14 @@ const Product = db.define('product', {
   timestamps: false
 });
 
-module.exports = Product;
-
 Product.belongsTo(Category, {
   foreignKey: 'idCategoryProduct',
-  // sourceKey: 'idCategory'
 });
 
+Product.belongsTo(User, {
+  foreignKey: 'idUserProduct',
+});
+
+module.exports = Product;
 
 
