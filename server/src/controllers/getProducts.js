@@ -1,5 +1,6 @@
 const Product = require('../models/Product');
 const Category = require('../models/Category');
+const Photo = require('../models/Photo');
 
 module.exports = async (req, res) => {
   try {
@@ -11,7 +12,7 @@ module.exports = async (req, res) => {
           }
         }
       ],
-      attributes: {exclude: ['idCategoryProduct']}
+      attributes: { exclude: ['idCategoryProduct'] }
     });
     res.status(200).json(products);
   } catch (error) {
