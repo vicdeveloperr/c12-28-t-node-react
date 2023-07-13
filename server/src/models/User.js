@@ -30,25 +30,23 @@ const User = db.define('user', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    idUserRol: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    idUserPhoto: {
+    idUserAddress: {
         type: DataTypes.INTEGER,
         allowNull: false
     }
 },
     {
-        timestamps: false
-    });
+        timestamps: false,
+    },
+
+);
 
 User.belongsTo(Rol, {
-    through: 'idUserRol'
-})
+    foreignKey: 'idRol',
+});
 
 User.belongsTo(Photo, {
-    through: 'idUserPhoto'
+    foreignKey: 'idPhoto'
 })
 
 module.exports = User;

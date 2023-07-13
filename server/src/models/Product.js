@@ -107,18 +107,14 @@ const Product = db.define('product', {
 
 Product.belongsTo(Category, {
   foreignKey: 'idCategoryProduct',
-  // sourceKey: 'idCategory'
 });
 Product.belongsTo(User, {
   foreignKey: 'idUserProduct',
-  // sourceKey: 'idCategory'
 });
 Product.belongsToMany(Photo, {
   through: 'Product_Photo'
 })
 
 module.exports = Product;
-
-
 
 
