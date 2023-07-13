@@ -1,9 +1,9 @@
 export default function Footer() {
   return (
-    <footer className="bg-[var(--dark-blue)] p-16 flex flex-col gap-6">
+    <footer className="bg-tertiary-color p-16 flex flex-col gap-6">
       <div id="first-col" className="flex gap-4 justify-between">
         <div className="flex flex-col gap-2 w-[29ch]">
-          <h3 className="text-2xl text-white font-bold">Estemos en contacto</h3>
+          <h3 className="text-xl text-white font-bold">Estemos en contacto</h3>
           <p className="text-[#ddd] font-light">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
             consequatur dolores vero, deserunt temporibus reprehenderit dicta
@@ -12,7 +12,7 @@ export default function Footer() {
           <div id="social-net"></div>
         </div>
         <div className="flex flex-col gap-2 w-[29ch]">
-          <h3 className="text-2xl text-white font-bold">
+          <h3 className="text-xl text-white font-bold">
             Información de Compañía
           </h3>
           <ul className="text-white">
@@ -31,10 +31,10 @@ export default function Footer() {
           </ul>
         </div>
         <div className="flex flex-col gap-2 w-[29ch]">
-          <h3 className="text-2xl text-white font-bold">Características</h3>
+          <h3 className="text-xl text-white font-bold">Características</h3>
         </div>
         <div className="flex flex-col gap-2 w-[29ch]">
-          <h3 className="text-2xl text-white font-bold">Recursos</h3>
+          <h3 className="text-xl text-white font-bold">Recursos</h3>
           <ul className="text-white">
             <li>
               <a href="">iOS & Android</a>
