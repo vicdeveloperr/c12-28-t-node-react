@@ -1,4 +1,5 @@
 import Footer from "../components/common/Footer";
+import NavBar from "../components/common/NavBar";
 
 function ProductCard() {
   return (
@@ -37,22 +38,9 @@ export default function Landing() {
         id="hero-section"
         className=" flex flex-col gap-4 h-screen bg-white "
       >
-        <header className="p-4 flex gap-4 justify-between w-full bg-red-200">
-          <h3>Brandname</h3>
-          <div>
-            <input type="text" placeholder="Buscar" />
-          </div>
-          <div className="flex gap-2">
-            <p>
-              <a href="/login">Login</a>
-            </p>
-            <p>
-              <a href="/register">Register</a>
-            </p>
-          </div>
-        </header>
-        <div className="p-16 flex flex-col gap-5 pt-32 w-1/2">
-          <h1 className="text-5xl text-blue-950 font-extrabold leading-snug">
+        <NavBar />
+        <div className="p-16 flex flex-col gap-3 pt-32 w-1/2">
+          <h1 className="text-3xl w-[18ch] text-blue-950 font-extrabold leading-snug">
             Todos tus productos en un sólo lugar!
           </h1>
           <p className="text-xl text-gray-600">
