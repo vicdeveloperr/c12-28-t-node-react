@@ -1,11 +1,13 @@
 import Footer from "../components/common/Footer";
+import SideBarNav from "../components/common/SideBarNav";
 import Header from "../components/layouts/Header";
 
 export default function Landing() {
   return (
     <>
       <Header />
-
+      <SideBarNav />
+      
       <section
         id="hero-section"
         className=" flex flex-col gap-4 h-screen bg-white "
@@ -38,9 +40,9 @@ export default function Landing() {
           </p>
 
           <div id="lista-ofertas" className="flex gap-6 justify-center mt-10">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {/*<ProductCard />
+              <ProductCard />
+              <ProductCard />*/}
           </div>
 
           <button className="rounded-md bg-blue-950 text-white font-bold p-4 w-52 mt-10 mx-auto">
