@@ -3,7 +3,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function SearchBar() {
   return (
-    <form id="searchBar" className="overflow-hidden flex-nowrap text-parrafo flex invisible md:flex max-w-[550px] min-w-0 right-0 m-auto">
+    <form id="searchBar" className="overflow-hidden flex-nowrap text-parrafo flex hidden md:flex max-w-[550px] min-w-0 right-0 m-auto">
       <input
         className="rounded-s-lg overflow-hidden p-2 focus:outline-none bg-white-color flex-shrink"
         placeholder="Buscar.."

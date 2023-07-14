@@ -46,7 +46,7 @@ function TopBar() {
   function desplegarSearchBar() {
     const searchBarElement: HTMLElement | null = document.querySelector("#searchBar");
     if(searchBarElement) {
-      searchBarElement.classList.remove("invisible")
+      searchBarElement.classList.remove("hidden")
     }
     hiddenElements(["logoElement", "sideBarNavToglerElement", "searchBarToglerElement"])
   }
