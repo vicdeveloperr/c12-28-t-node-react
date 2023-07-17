@@ -8,25 +8,29 @@ export default {
     extend: {
       colors: {
         "primary-color": "#FF7B47",
+        "primary-color-light": "#FFF2ED",
         "secondary-color": "#0D5C63",
-        "tertiary color": "#17213C",
-        "dark-color": "#17213C",
-        "white-color": "#f9f9f9"
+        "tertiary-color": "#17213C",
+        "dark-color": "#121312",
+        "white-color": "#F9FAFC"
       }
     },
     fontSize: {
-      "h1": "64px",
-      "h2": "44px",
-      "h3": "21px",
-      "h4": "20px",
-      "h5": "19px",
-      "h6": "14px",
+      "3xl": "64px",
+      "2xl": "44px",
+      "xg": "24px",
+      "lg": "20px",
+      "base": "19px",
+      "sm": "14px",
       "btn-text": "16px",
       "nav-items": "30px",
-      "parrafo": "16px",
-      "lista": "20px"
+      "lista": "20px", 
+      "parrafo": "18px",
+      "h1": "64px",
+      "h2": "44px",
+      "h3": "24px",
+      "h4": "20px"
     }
   },
   plugins: [],
 }
-
