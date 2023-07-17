@@ -6,6 +6,6 @@ const server = express();
 server.use(express.json());
 server.use(morgan('dev'));
 
-server.use('/products', require('./routes/index'));
+server.use('/', require('./routes/index.routes'));
 
 module.exports = server;
