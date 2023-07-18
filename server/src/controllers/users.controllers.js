@@ -11,7 +11,7 @@ const getUsers = async (req, res) => {
           }
         }
       ],
-      attributes: { exclude: ['idRol'] }
+      attributes: { exclude: ['idRol', 'password'] }
     });
     res.status(200).json(users);
   } catch (error) {
