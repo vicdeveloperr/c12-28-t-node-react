@@ -1,17 +1,44 @@
 import Footer from "../components/common/Footer";
-import SideBarNav from "../components/common/SideBarNav";
-import Header from "../components/layouts/Header";
+import TopBar from "../components/common/TopBar";
+
+function ProductCard() {
+  return (
+    <div className="rounded-md  bg-white w-80 shadow-sm">
+      <img
+        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+        alt="Auriculares en fondo amarillo"
+        className="rounded-t-md"
+      />
+      <div className="flex flex-col gap-2 items-center p-4">
+        <h4 className="text-gray-900">Auriculares</h4>
+        <p className="text-gray-600 font-light">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
+          tenetur esse aliquam asperiores numquam laboriosam omnis eius aut
+          quisquam, minima labore voluptas ad! Quas ab in quaerat velit cumque
+          repellendus!
+        </p>
+        <small className="font-semibold">
+          <strong>10 Disponibles</strong>
+        </small>
+        <p className="text-gray-900">
+          <strong>$10.000</strong>
+        </p>
+        <button className="rounded-2xl py-2 px-5 border border-blue-950 text-blue-950 mt-10">
+          Leer más
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default function Landing() {
   return (
-    <>
-      <Header />
-      <SideBarNav />
-      
+    <div className="">
       <section
         id="hero-section"
         className=" flex flex-col gap-4 h-screen bg-white "
       >
+        <TopBar />
         <div className="p-16 flex flex-col gap-3 pt-32 w-1/2">
           <h1 className="text-3xl w-[18ch] text-blue-950 font-extrabold leading-tight">
             Todos tus productos en un sólo lugar!
@@ -40,9 +67,9 @@ export default function Landing() {
           </p>
 
           <div id="lista-ofertas" className="flex gap-6 justify-center mt-10">
-            {/*<ProductCard />
-              <ProductCard />
-              <ProductCard />*/}
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
           </div>
 
           <button className="rounded-md bg-blue-950 text-white font-bold p-4 w-52 mt-10 mx-auto">
@@ -71,8 +98,7 @@ export default function Landing() {
           </p>
         </div>
       </section>
-
       <Footer />
-    </>
+    </div>
   );
 }

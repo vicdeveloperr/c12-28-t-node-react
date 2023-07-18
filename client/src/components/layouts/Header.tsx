@@ -1,4 +1,4 @@
-import TopBar from "../common/TopBar"
+import TopBar from "../common/TopBar";
 
 function Header() {
     return (
