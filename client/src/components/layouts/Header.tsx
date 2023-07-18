@@ -1,3 +1,4 @@
+//@ts-ignore
 import NavBar from "../common/NavBar"
 
 function Header() {

@@ -1,7 +1,6 @@
 const Product = require('../models/Product');
 const Category = require('../models/Category');
-const User = require('../models/User')
-const PhotoProduct = require('../models/PhotoProduct')
+const User = require('../models/User');
 
 const getProducts = async (req, res) => {
   try {

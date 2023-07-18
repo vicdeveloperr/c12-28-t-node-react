@@ -1,7 +1,51 @@
-import Footer from "../components/common/Footer";
+import {useState} from "react"
+
 import NavBar from "../components/common/NavBar";
+import Footer from "../components/common/Footer";
 
 export default function Register() {
+
+  interface UserFormState {
+    user: string;
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+  }
+
+  const [userForm, setUserForm] = useState<UserFormState>({
+    user: '',
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
+    setUserForm({...userForm, [e.target.name]: e.target.value});
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3001/auth/signup', {
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(userForm)
+      })
+      alert('Usuario dado de alta con exito');
+      if (response.status === 200) {
+        const data = await response.json();
+        console.log(data);
+      } else {
+        console.log('Error al dar de alta usuario');
+      }
+
+    } catch (error) {
+      console.error('Error al realizar la petición', error);
+    }
+  }
+
   return (
     <>
       <NavBar />
@@ -15,48 +59,82 @@ export default function Register() {
 
           <div className="bg-white-color px-14 py-8 flex flex-col gap-6 items-center justify-center rounded-b-[15px] shadow-sm">
             <h2 className="text-center font-bold text-xl">Crear Cuenta</h2>
-            <div className="flex flex-col justify-center item-center gap-2">
-              <label>
-                <h3>Nombre Completo</h3>
-                <input
-                  type="text"
-                  required
-                  className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
-                />
-              </label>
-              <label>
-                <h3>Correo electrónico</h3>
-                <input
-                  type="text"
-                  required
-                  className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
-                />
-              </label>
-              <label>
-                <h3>Contraseña</h3>
-                <input
-                  type="text"
-                  placeholder="Debe tener al menos 6 caracteres"
-                  required
-                  className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
-                />
-              </label>
-              <label>
-                <h3>Vuelve a escribir la contraseña</h3>
-                <input
-                  type="text"
-                  required
-                  className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
-                />
-              </label>
-              <small className="text-gray-500">
-                Al crear una cuenta, aceptas las Condiciones de Uso y el Aviso
-                de Privacidad de Lorem Ipsum.
-              </small>
-              <button className="bg-tertiary-color rounded-full p-2 text-lg text-white">
-                Aceptar
-              </button>
-            </div>
+            <form onSubmit={handleSubmit}>
+              <div className="flex flex-col justify-center item-center gap-2">
+                <label>
+                  <h3>Nombre de Usuario</h3>
+                  <input
+                    autoFocus
+                    name="user"
+                    value={userForm.user}
+                    type="text"
+                    required
+                    className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <h3>Email</h3>
+                  <input
+                    name="email"
+                    value={userForm.email}
+                    type="text"
+                    required
+                    className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <h3>Nombre</h3>
+                  <input
+                    name="firstName"
+                    value={userForm.firstName}
+                    type="text"
+                    required
+                    className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <h3>Apellido</h3>
+                  <input
+                    name="lastName"
+                    value={userForm.lastName}
+                    type="text"
+                    required
+                    className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <h3>Contraseña</h3>
+                  <input
+                    name="password"
+                    value={userForm.password}
+                    type="text"
+                    placeholder="Debe tener al menos 6 caracteres"
+                    required
+                    className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <h3>Vuelve a escribir la contraseña</h3>
+                  <input
+                    type="text"
+                    required
+                    className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
+                  />
+                </label>
+                <small className="text-gray-500">
+                  Al crear una cuenta, aceptas las Condiciones de Uso y el Aviso
+                  de Privacidad de Lorem Ipsum.
+                </small>
+                <button type="submit" className="bg-tertiary-color rounded-full p-2 text-lg text-white">
+                  Aceptar
+                </button>
+              f</div>
+            </form>
           </div>
         </div>
       </div>
