@@ -11,21 +11,21 @@ const getUsers = async (req, res) => {
           }
         }
       ],
-      attributes: {exclude: ['idRol']}
+      attributes: { exclude: ['idRol'] }
     });
     res.status(200).json(users);
   } catch (error) {
-      console.log(error);
-    }
+    console.log(error);
+  }
 };
 
 const getUserByEmail = async (req, res) => {
 
-  const {email} = req.query;
+  const { email } = req.query;
 
   try {
     const userfound = await User.findOne({
-      where: {email: email},
+      where: { email: email },
       include: [
         {
           model: Rol, attributes: {
@@ -33,17 +33,17 @@ const getUserByEmail = async (req, res) => {
           }
         }
       ],
-      attributes: {exclude: ['idRol']}
+      attributes: { exclude: ['idRol'] }
     }
     );
     res.status(200).json(userfound);
   } catch (error) {
-      console.log(error);
-    }
+    console.log(error);
+  }
 };
 
 const createUser = async (req, res) => {
-  res.send('creating user')
+  return res.send('Hello world')
 }
 
 module.exports = {
