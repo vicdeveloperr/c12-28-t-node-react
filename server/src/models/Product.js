@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const db = require('../config/db');
 const Category = require('../models/Category');
 const User = require('../models/User');
-//const PhotoProduct = require('../models/PhotoProduct');
+const Photo = require('../models/Photo');
 
 const Product = db.define('product', {
   // Defino modelo
@@ -106,13 +106,11 @@ const Product = db.define('product', {
   });
 
 Product.belongsTo(Category, {
-  foreignKey: 'idCategoryProduct',
-  as: 'category'
+  foreignKey: 'idCategoryProduct'
 });
 
 Product.belongsTo(User, {
-  foreignKey: 'idUserProduct',
-  as: 'user'
+  foreignKey: 'idUserProduct'
 });
 
 Product.belongsToMany(Photo, {
