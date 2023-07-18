@@ -108,12 +108,18 @@ const Product = db.define('product', {
 Product.belongsTo(Category, {
   foreignKey: 'idCategoryProduct',
 });
+
 Product.belongsTo(User, {
   foreignKey: 'idUserProduct',
 });
+
 Product.belongsToMany(Photo, {
-  through: 'Product_Photo'
-})
+  through: 'product_photo'
+});
+
+Photo.belongsToMany(Product, {
+  through: 'product_photo'
+});
 
 module.exports = Product;
 
