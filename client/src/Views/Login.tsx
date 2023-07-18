@@ -1,9 +1,51 @@
-import { Link } from "react-router-dom";
+import {useState} from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 import Footer from "../components/common/Footer";
 import NavBar from "../components/common/NavBar";
 
 const Login = () => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+  
+  const handleEmailChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
+    setEmail(e.target.value)
+  }
+  
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
+    setPassword(e.target.value)
+  }
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    // try {
+      const response = await axios.post('http://localhost:3001/auth/signin', {
+        email, password 
+      })
+      console.log(response);
+      if (response.statusText === 'OK') {
+        const { token } = response.data;
+        console.log(token);
+        localStorage.setItem('token', token);
+        localStorage.setItem('email', email);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        navigate('/home')
+
+      } else {
+        alert('Datos de inicio de sesion incorrectos!')
+        console.log('Error al iniciar la sesión');
+      }
+
+    // } catch (error) {
+    //   console.log('Error al realizar la petición');
+    // }
+  }
+
   return (
     <>
       <NavBar />
@@ -16,25 +58,34 @@ const Login = () => {
 
         <div className="bg-white-color px-14 py-8 gap-6 flex flex-col items-center justify-center rounded-b-[15px] shadow-sm">
           <h2 className="text-center font-bold text-xl">Inicio de sesión</h2>
-          <div className="flex flex-col justify-center item-center gap-2">
-            <label>
-              <h3 className="">Usuario</h3>
-              <input
-                type="text"
-                className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
-              />
-            </label>
-            <label>
-              <h3 className="mt-2">Contraseña</h3>
-              <input
-                type="text"
-                className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
-              />
-            </label>
-            <button className="bg-tertiary-color rounded-full p-2 text-lg text-white">
-              Aceptar
-            </button>
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="flex flex-col justify-center item-center gap-2">
+              <label>
+                <h3 className="">Usuario</h3>
+                <input
+                  autoFocus
+                  required
+                  name="email"
+                  type="email"
+                  onChange={handleEmailChange}
+                  className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
+                />
+              </label>
+              <label>
+                <h3 className="mt-2">Contraseña</h3>
+                <input
+                  name="password"
+                  required
+                  type="text"
+                  onChange={handlePasswordChange}
+                  className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
+                />
+              </label>
+              <button type="submit" className="bg-tertiary-color rounded-full p-2 text-lg text-white">
+                Aceptar
+              </button>
+          fo</div>
+          </form>
           <div className="flex gap-2 items-center">
             <p>No tienes cuenta?</p>
             <Link className="text-primary-color" to="/register">
