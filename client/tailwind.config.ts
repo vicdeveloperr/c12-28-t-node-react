@@ -14,27 +14,18 @@ export default {
         "tertiary-color": "#17213C",
         "dark-color": "#121312",
         "white-color": "#F9FAFC"
+      },
+      fontSize: {
+        "btn-text": "16px",
+        "nav-items": "30px",
+        "lista": "20px", 
+        "parrafo": "18px",
+        "h1": "64px",
+        "h2": "44px",
+        "h3": "24px",
+        "h4": "20px"
       }
     },
-    fontSize: {
-      "3xl": "64px",
-      "2xl": "44px",
-      "xg": "24px",
-      "lg": "20px",
-      "base": "19px",
-      "sm": "14px",
-      "btn-text": "16px",
-      "nav-items": "30px",
-      "lista": "20px", 
-      "parrafo": "18px",
-      "h1": "64px",
-      "h2": "44px",
-      "h3": "24px",
-      "h4": "20px"
-    }
   },
-  plugins: [
-    //require('flowbite/plugin'),
-  ],
+  plugins: [],
 }
-
