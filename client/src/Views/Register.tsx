@@ -1,28 +1,10 @@
 import LogAndRegForm from "./LogAndRegForm";
 
 export default function Register() {
-  const SERVER_URL = "http://localhost:3001/user";
-
-  const onSubmit = event => {
-    event.preventDefault();
-
-    fetch(SERVER_URL, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "no-cors",
-      referrerPolicy: "no-referrer",
-      method: "POST",
-      body: JSON.stringify("Hello world"),
-    }).then(res => res.json());
-  };
-
   return (
     <LogAndRegForm>
       <form
         className="bg-white-color px-14 py-8 flex flex-col gap-6 items-center justify-center rounded-b-[15px] shadow-sm"
-        onSubmit={onSubmit}
-        method="POST"
       >
         <h2 className="text-center font-bold text-xl">Crear Cuenta</h2>
         <div className="flex flex-col justify-center item-center gap-2">
