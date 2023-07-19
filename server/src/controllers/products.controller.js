@@ -160,21 +160,10 @@ const deleteProduct = async (req, res) => {
   }
 }
 
-const getCategories = async (req, res) => {
-  console.log("\nzzz             zzzz              zzz             zzz\n")
-  try {
-    const categories = await Category.findAll();
-    res.status(200).json(categories);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 module.exports = {
   getProducts,
   getProduct,
   createProduct,
   editProductPhoto,
-  deleteProduct,
-  getCategories
+  deleteProduct
 }
