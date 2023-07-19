@@ -71,9 +71,9 @@ export default function Landing() {
           </p>
 
           <div id="lista-ofertas" className="flex gap-6 justify-center mt-10">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
           </div>
 
           <button className="rounded-md bg-blue-950 text-white font-bold p-4 w-52 mt-10 mx-auto">
@@ -102,6 +102,7 @@ export default function Landing() {
           </p>
         </div>
       </section>
+
       <Footer />
     </div>
   );

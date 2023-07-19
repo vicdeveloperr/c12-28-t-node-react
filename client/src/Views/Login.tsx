@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 
 import Footer from "../components/common/Footer";
-import NavBar from "../components/common/NavBar";
+import TopBar from "../components/common/TopBar";
+import ButtonLogIn from "../components/common/ButtonLogIn";
 
 const Login = () => {
   return (
     <>
-      <NavBar />
+      <TopBar />
       <div className="w-[346px] flex flex-col items-center py-10 m-auto">
         <img
           className="rounded-t-[15px] shadow-lg"
@@ -16,7 +17,7 @@ const Login = () => {
 
         <div className="bg-white-color px-14 py-8 gap-6 flex flex-col items-center justify-center rounded-b-[15px] shadow-sm">
           <h2 className="text-center font-bold text-xl">Inicio de sesión</h2>
-          <div className="flex flex-col justify-center item-center gap-2">
+          <form className="flex flex-col justify-center item-center gap-2">
             <label>
               <h3 className="">Usuario</h3>
               <input
@@ -31,10 +32,8 @@ const Login = () => {
                 className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
               />
             </label>
-            <button className="bg-tertiary-color rounded-full p-2 text-lg text-white">
-              Aceptar
-            </button>
-          </div>
+            <ButtonLogIn />
+          </form>
           <div className="flex gap-2 items-center">
             <p>No tienes cuenta?</p>
             <Link className="text-primary-color" to="/register">

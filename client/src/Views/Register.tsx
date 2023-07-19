@@ -1,10 +1,10 @@
 import Footer from "../components/common/Footer";
-import NavBar from "../components/common/NavBar";
+import TopBar from "../components/common/TopBar";
 
 export default function Register() {
   return (
     <>
-      <NavBar />
+      <TopBar />
       <div className="py-8 w-[346px] m-auto">
         <div className="rounded-sm flex flex-col justify-center items-center ">
           <img
