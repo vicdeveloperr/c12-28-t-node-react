@@ -47,6 +47,7 @@ function TopBar() {
     const searchBarElement: HTMLElement | null = document.querySelector("#searchBar");
     if(searchBarElement) {
       searchBarElement.classList.remove("hidden")
+      searchBarElement.classList.add("flex")
     }
     hiddenElements(["logoElement", "sideBarNavToglerElement", "searchBarToglerElement"])
   }
