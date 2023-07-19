@@ -10,7 +10,7 @@ router.get('/', getProducts);
 router.get('/:id', getProduct);
 
 router.post('/', /* [verifyToken, isUser], */ createProduct);
-router.delete('/:id', [verifyToken, isUser], deleteProduct);
+router.delete('/:id', /* [verifyToken, isUser], */ deleteProduct);
 // router.put('/productId', controllers.postProduct);
 router.get('/categories', getCategories);
 

@@ -14,83 +14,83 @@ const Product = db.define('product', {
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   stock: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: true
   },
   price: {
     type: DataTypes.DOUBLE,
-    allowNull: false
+    allowNull: true
   },
   topic_1: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   detail_1: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   topic_2: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   detail_2: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   topic_3: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   detail_3: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   topic_4: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   detail_4: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   topic_5: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   detail_5: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   topic_6: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   detail_6: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   topic_7: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   detail_7: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   topic_8: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   detail_8: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   idCategoryProduct: {
     type: DataTypes.INTEGER,
