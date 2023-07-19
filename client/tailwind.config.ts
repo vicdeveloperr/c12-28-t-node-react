@@ -11,6 +11,7 @@ export default {
         "primary-color": "#FF7B47",
         "primary-color-light": "#FFF2ED",
         "secondary-color": "#0D5C63",
+        "secondary-color-light": "#EAF0FF",
         "tertiary-color": "#17213C",
         "dark-color": "#121312",
         "white-color": "#F9FAFC",

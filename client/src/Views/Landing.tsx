@@ -60,7 +60,7 @@ export default function Landing() {
 
       <section
         id="oferta-productos"
-        className="pt-32 pb-32 bg-[var(--primary-color-light)"
+        className="pt-32 pb-32 bg-primary-color-light"
       >
         <div className="text-center flex flex-col gap-4">
           <h3 className="text-2xl text-tertiary-color font-bold">
