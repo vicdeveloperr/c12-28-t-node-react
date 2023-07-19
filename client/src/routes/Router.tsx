@@ -3,6 +3,7 @@ import HomePage from "../views/HomePage";
 import Register from "../views/Register";
 import Login from "../views/Login";
 import Landing from "../views/Landing";
+import Input from "../components/common/Input";
 
 function Router() {
     return (
@@ -12,6 +13,7 @@ function Router() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/input" element={<Input inputId="input" inputName="input" color="secondary-color" />} />
         </Routes>
     </BrowserRouter>
     );

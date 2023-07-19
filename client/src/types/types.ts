@@ -1,0 +1,1 @@
+export type typeColor = "primary-color" | "primary-color-light" | "secondary-color-light" | "secondary-color";

@@ -8,22 +8,22 @@ export default function ProductCard() {
           alt="Auriculares en fondo amarillo"
           className="rounded-t-md"
         />
-        <div className="flex flex-col gap-2 p-4">
-            <h6 className="text-primary-color font-medium">Categoría</h6>
-          <h4 className="text-gray-900 font-bold text-lg">Auriculares</h4>
-          <p className="text-gray-600 font-light">
+        <div className="flex flex-col p-4">
+          <h5 className="text-primary-color font-medium">Categoría</h5>
+          <h4 className="text-secondary-color font-bold text-h3">Auriculares</h4>
+          <p className="font-light my-3">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
             tenetur esse aliquam asperiores numquam laboriosam omnis eius aut
             quisquam, minima labore voluptas ad! Quas ab in quaerat velit cumque
             repellendus!
           </p>
-          <small className="font-semibold">
-            <strong>10 Disponibles</strong>
-          </small>
-          <p className="text-gray-900">
-            <strong>$10.000</strong>
+          <p className="font-medium text-secondary-color">
+            10 Disponibles
           </p>
-          <Button>Ver más</Button>
+          <h6 className="text-secondary-color font-bold text-h4">
+            $10.000
+          </h6>
+          <Button color="primary-color">Ver más</Button>
         </div>
       </div>
     );
