@@ -13,7 +13,8 @@ export default {
         "secondary-color": "#0D5C63",
         "tertiary-color": "#17213C",
         "dark-color": "#121312",
-        "white-color": "#F9FAFC"
+        "white-color": "#F9FAFC",
+        "light-blue-color" : "#D7FBFE"
       }
     },
     fontSize: {
