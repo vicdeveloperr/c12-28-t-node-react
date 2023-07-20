@@ -10,10 +10,12 @@ export default {
       colors: {
         "primary-color": "#FF7B47",
         "primary-color-light": "#FFF2ED",
-        "secondary-color": "#0D5C63",
-        "tertiary-color": "#17213C",
+        "secondary-color": "#17213C",
+        "secondary-color-light": "#EAF0FF",
+        "tertiary-color": "#0D5C63",
         "dark-color": "#121312",
-        "white-color": "#F9FAFC"
+        "white-color": "#F9FAFC",
+        "light-blue-color": "#D7FBFE"
       }
     },
     fontSize: {
@@ -25,11 +27,14 @@ export default {
       "sm": "14px",
       "btn-text": "16px",
       "nav-items": "30px",
-      "lista": "20px"
+      "lista": "20px",
+      "h1": "64px",
+      "h2": "44px",
+      "h3": "24px",
+      "h4": "20px"
     }
   },
   plugins: [
     //require('flowbite/plugin'),
   ],
 }
-

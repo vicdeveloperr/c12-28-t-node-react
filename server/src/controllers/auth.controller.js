@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const Rol = require('../models/Rol');
+// const Role = require('../models/Role');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -26,7 +26,7 @@ const signUp = async (req, res) => {
     expiresIn: 86400 // expira en 24 hs
   });
   // devuelvo el token generado
-  return res.status(200).json({ token });
+  res.status(200).json({ token });
 }
 
 /*** LOGIN DE USUARIO ***/

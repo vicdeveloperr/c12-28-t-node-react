@@ -22,6 +22,7 @@ const Category = db.define('category', {
   }
 },
   {
+    initialAutoIncrement: 1,
     timestamps: false
   });
 

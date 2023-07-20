@@ -1,12 +1,12 @@
 const User = require('../models/User');
-const Rol = require('../models/Rol');
+const Role = require('../models/Role');
 
 const getUsers = async (req, res) => {
   try {
     const users = await User.findAll({
       include: [
         {
-          model: Rol, attributes: {
+          model: Role, attributes: {
             exclude: ['idRol']
           }
         }
@@ -26,7 +26,7 @@ const getUserByEmail = async (req, res) => {
       where: { email: email },
       include: [
         {
-          model: Rol, attributes: {
+          model: Role, attributes: {
             exclude: ['idRol']
           }
         }

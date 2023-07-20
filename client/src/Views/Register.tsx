@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import NavBar from "../components/common/NavBar";
 import Footer from "../components/common/Footer";
+import TopBar from "../components/common/TopBar";
 
 export default function Register() {
   interface UserFormState {
@@ -37,6 +37,7 @@ export default function Register() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userForm),
       });
+      alert("Usuario dado de alta con exito");
       if (response.status === 200) {
         alert("Usuario dado de alta con exito");
         const data = await response.json();
@@ -52,7 +53,8 @@ export default function Register() {
 
   return (
     <>
-      <NavBar />
+      <TopBar />
+
       <div className="py-8 w-[346px] m-auto">
         <div className="rounded-sm flex flex-col justify-center items-center ">
           <img
@@ -147,6 +149,7 @@ export default function Register() {
                 >
                   Aceptar
                 </button>
+                f
               </div>
             </form>
           </div>

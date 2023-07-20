@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import Footer from "../components/common/Footer";
 import NavBar from "../components/common/NavBar";
 
 const Login = () => {
@@ -24,27 +25,33 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    // try {
     const response = await axios.post("http://localhost:3001/auth/signin", {
       email,
       password,
     });
-
+    console.log(response);
     if (response.statusText === "OK") {
       const { token } = response.data;
+      console.log(token);
       localStorage.setItem("token", token);
       localStorage.setItem("email", email);
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       navigate("/home");
     } else {
-      console.error("Datos de inicio de sesion incorrectos!");
+      alert("Datos de inicio de sesion incorrectos!");
+      console.log("Error al iniciar la sesión");
     }
+
+    // } catch (error) {
+    //   console.log('Error al realizar la petición');
+    // }
   };
 
   return (
     <>
-      <NavBar />
+      <TopBar />
       <div className="w-[346px] flex flex-col items-center py-10 m-auto">
         <img
           className="rounded-t-[15px] shadow-lg"
@@ -88,6 +95,7 @@ const Login = () => {
               >
                 Aceptar
               </button>
+              fo
             </div>
           </form>
           <div className="flex gap-2 items-center">
