@@ -2,7 +2,7 @@
 
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const Rol = require('../models/Rol');
+const Rol = require('../models/Role');
 require('dotenv').config()
 
 const verifyToken = async (req, res, next) => {
@@ -22,14 +22,14 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-const isSeller = async (req, res, next) => {
+const isUser = async (req, res, next) => {
   const token = req.headers["x-access-token"];
   const decoded = jwt.verify(token, process.env.SECRET);
   
   const user = await User.findByPk(decoded.id);
   const roles = await Rol.findOne({where: { idRol: user.idRol }});
   
-  if (roles.name === 'Vendedor') {
+  if (roles.name === 'User') {
     next();
     return;
   } else {
@@ -44,7 +44,7 @@ const isAdmin = async (req, res, next) => {
   const user = await User.findByPk(decoded.id);
   const roles = await Rol.findOne({where: { idRol: user.idRol }});
   
-  if (roles.name === 'Administrador') {
+  if (roles.name === 'Admin') {
     next();
     return;
   } else {
@@ -54,6 +54,6 @@ const isAdmin = async (req, res, next) => {
 
 module.exports = {
   verifyToken,
-  isSeller,
+  isUser,
   isAdmin
 }
