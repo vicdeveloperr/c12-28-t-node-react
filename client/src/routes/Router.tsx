@@ -5,7 +5,7 @@ import Login from "../views/Login";
 import Landing from "../views/Landing";
 import Detail from "../views/Detail";
 import Products from "../views/Products";
-import Input from "../components/common/Input";
+import Perfil from "../views/Perfil";
 
 
 function Router() {
@@ -19,7 +19,7 @@ function Router() {
           <Route path="/products" element={<Products />} />
           <Route path="/detail" element={<Detail />} />
           
-          <Route path="/input" element={<Input inputId="input" inputName="input" color="secondary-color" />} />
+          <Route path="/perfil" element={<Perfil />} />
 
         </Routes>
     </BrowserRouter>

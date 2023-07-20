@@ -8,7 +8,7 @@ function TopBar() {
   const { searchBarElement, sideBarNavToglerElement, logoElement, hiddenElements, searchBarToglerElement} = useTopBarStore(state => state)
 
   return (
-    <nav className="bg-primary-color-light relative">
+    <nav className="bg-primary-color-light">
       <Container>
         <div className="flex justify-between items-center">
           {logoElement ? <h3 id="logo" className="text-[32px] font-bold">BrandName</h3> : <></>}
@@ -47,7 +47,6 @@ function TopBar() {
     const searchBarElement: HTMLElement | null = document.querySelector("#searchBar");
     if(searchBarElement) {
       searchBarElement.classList.remove("hidden")
-      searchBarElement.classList.add("flex")
     }
     hiddenElements(["logoElement", "sideBarNavToglerElement", "searchBarToglerElement"])
   }

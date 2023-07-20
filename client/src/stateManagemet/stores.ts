@@ -9,7 +9,6 @@ type topBarStore = {
     hiddenElements: (elements: Array<elementsInTopBarElement>) => void,
     showElements: (elements: Array<elementsInTopBarElement>) => void
 }
-
 export const useTopBarStore = create<topBarStore>()((set) => ({
     sideBarNavToglerElement: true,
     searchBarToglerElement: true,
@@ -48,3 +47,18 @@ export const useTopBarStore = create<topBarStore>()((set) => ({
             return elements
     })
 }));
+
+type perfilViewStore = {
+    editMode: boolean,
+    changeMode: (mode: "edit" | "noEdit") => void
+}
+export const usePerfilViewStore = create<perfilViewStore>()((set) => ({
+    editMode: false,
+    changeMode: (mode) => set(() => {
+        if(mode === "edit") {
+            return ({editMode: true})
+        }else {
+            return ({editMode: false})
+        }
+    })
+}))
