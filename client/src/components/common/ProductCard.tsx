@@ -1,6 +1,9 @@
 import Button from "./Button";
+import { Link } from 'react-router-dom';
 
 export default function ProductCard() {
+
+   
     return (
       <div className="rounded-md bg-white w-80 shadow-sm hover:bg-blue-100 text-left">
         <img
@@ -23,7 +26,9 @@ export default function ProductCard() {
           <h6 className="text-secondary-color font-bold text-h4">
             $10.000
           </h6>
+          <Link to= "/detail">
           <Button color="primary-color">Ver más</Button>
+          </Link>
         </div>
       </div>
     );

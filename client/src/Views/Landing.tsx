@@ -37,7 +37,7 @@ export default function Landing() {
         className="pt-32 pb-32 bg-primary-color-light"
       >
         <div className="text-center flex flex-col gap-4">
-          <h3 className="text-2xl text-tertiary-color font-bold">
+          <h3 className="text-2xl text-blue-950 font-bold">
             Productos en Oferta
           </h3>
           <p className="text-gray-600 text-lg font-light">
@@ -50,7 +50,7 @@ export default function Landing() {
               <ProductCard />
           </div>
 
-          <button className="rounded-md bg-blue-950 text-white font-bold p-4 w-52 mt-10 mx-auto">
+          <button className="rounded-md bg-secondary-color text-white font-bold p-4 w-52 mt-10 mx-auto">
             Todas las ofertas
           </button>
         </div>
@@ -58,11 +58,11 @@ export default function Landing() {
 
       <section id="perfil-vendedores" className="py-32 bg-light-blue-color">
         <div className="text-center flex flex-col gap-4">
-          <h3 className="text-2xl text-tertiary-color font-bold">
+          <h3 className="text-2xl text-secondary-color font-bold">
             Perfiles de Vendedores
           </h3>
           <p className="text-lg text-gray-600 text-center font-light">
-            Venedores con productos que estás buscando con los mejores precios
+            Vendedores con productos que estás buscando con los mejores precios
           </p>
         </div>
       </section>
