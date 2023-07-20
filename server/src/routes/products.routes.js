@@ -9,7 +9,7 @@ const router = Router();
 router.get('/', getProducts);
 // router.get('/:id', controllers.getProduct);
 
-router.post('/', [verifyToken, isUser], createProduct);
+router.post('/', /*[verifyToken, isUser],*/ createProduct);
 router.delete('/:id', [verifyToken, isUser],deleteProduct);
 // router.put('/productId', controllers.postProduct);
 
