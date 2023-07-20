@@ -1,11 +1,14 @@
 import type { typeColor } from "../../types/types";
 
-function Input({ inputName, color, inputId, inputDisable, value }: { inputName: string, color: typeColor, inputId: string, inputDisable?: boolean, value?: string }) {
-    let inputClass = `border-b-[1.5px] w-full border-solid border-${color} focus:outline-none bg-transparent py-2 text-${color}`
+type typeInputProps = { inputName: string, color: typeColor, inputId: string, inputDisable?: boolean, value?: string, inputType?: string, handler?: (e: React.ChangeEvent<HTMLInputElement>) => void };
+
+function Input({ inputName, color, inputId, inputDisable, value, inputType, handler }: typeInputProps) {
+    const inputClass = `border-b-[1.5px] w-full border-solid border-${color} focus:outline-none bg-transparent py-2 text-${color}`
     if(inputDisable) {
         return (
             <input 
-                value={value}
+                type={inputType ? inputType : "text"}
+                defaultValue={value}
                 id={inputId} 
                 name={inputName} 
                 disabled
@@ -15,10 +18,12 @@ function Input({ inputName, color, inputId, inputDisable, value }: { inputName: 
     }else {
         return (
             <input 
+                type={inputType ? inputType : "text"}
                 value={value}
                 id={inputId} 
                 name={inputName} 
                 className={inputClass}
+                onChange={handler}
             />
         );
     }
