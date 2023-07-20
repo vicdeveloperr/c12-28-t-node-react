@@ -24,28 +24,22 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // try {
+
     const response = await axios.post("http://localhost:3001/auth/signin", {
       email,
       password,
     });
-    console.log(response);
+
     if (response.statusText === "OK") {
       const { token } = response.data;
-      console.log(token);
       localStorage.setItem("token", token);
       localStorage.setItem("email", email);
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       navigate("/home");
     } else {
-      alert("Datos de inicio de sesion incorrectos!");
-      console.log("Error al iniciar la sesión");
+      console.error("Datos de inicio de sesion incorrectos!");
     }
-
-    // } catch (error) {
-    //   console.log('Error al realizar la petición');
-    // }
   };
 
   return (
@@ -69,6 +63,8 @@ const Login = () => {
                   required
                   name="email"
                   type="email"
+                  minLength={5}
+                  maxLength={30}
                   onChange={handleEmailChange}
                   className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                 />
@@ -78,7 +74,10 @@ const Login = () => {
                 <input
                   name="password"
                   required
-                  type="text"
+                  type="password"
+                  minLength={8}
+                  maxLength={32}
+                  autoComplete="on"
                   onChange={handlePasswordChange}
                   className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                 />
@@ -89,7 +88,6 @@ const Login = () => {
               >
                 Aceptar
               </button>
-              fo
             </div>
           </form>
           <div className="flex gap-2 items-center">
