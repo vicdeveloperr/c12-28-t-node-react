@@ -1,7 +1,8 @@
-import {useState} from "react"
+import { useState } from "react"
 
 import NavBar from "../components/common/NavBar";
 import Footer from "../components/common/Footer";
+import TopBar from "../components/common/TopBar";
 
 export default function Register() {
 
@@ -22,7 +23,7 @@ export default function Register() {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
-    setUserForm({...userForm, [e.target.name]: e.target.value});
+    setUserForm({ ...userForm, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,7 +31,7 @@ export default function Register() {
     try {
       const response = await fetch('http://localhost:3001/auth/signup', {
         method: 'POST',
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userForm)
       })
       alert('Usuario dado de alta con exito');
@@ -48,7 +49,8 @@ export default function Register() {
 
   return (
     <>
-      <NavBar />
+      <TopBar />
+
       <div className="py-8 w-[346px] m-auto">
         <div className="rounded-sm flex flex-col justify-center items-center ">
           <img
@@ -133,7 +135,7 @@ export default function Register() {
                 <button type="submit" className="bg-tertiary-color rounded-full p-2 text-lg text-white">
                   Aceptar
                 </button>
-              f</div>
+                f</div>
             </form>
           </div>
         </div>

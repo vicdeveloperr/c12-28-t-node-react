@@ -1,9 +1,10 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import Footer from "../components/common/Footer";
-import NavBar from "../components/common/NavBar";
+import TopBar from "../components/common/TopBar";
+import ButtonLogIn from "../components/common/ButtonLogIn";
 
 const Login = () => {
 
@@ -11,35 +12,35 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
-  
+
   const handleEmailChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
     setEmail(e.target.value)
   }
-  
+
   const handlePasswordChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
     setPassword(e.target.value)
   }
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // try {
-      const response = await axios.post('http://localhost:3001/auth/signin', {
-        email, password 
-      })
-      console.log(response);
-      if (response.statusText === 'OK') {
-        const { token } = response.data;
-        console.log(token);
-        localStorage.setItem('token', token);
-        localStorage.setItem('email', email);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    const response = await axios.post('http://localhost:3001/auth/signin', {
+      email, password
+    })
+    console.log(response);
+    if (response.statusText === 'OK') {
+      const { token } = response.data;
+      console.log(token);
+      localStorage.setItem('token', token);
+      localStorage.setItem('email', email);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-        navigate('/home')
+      navigate('/home')
 
-      } else {
-        alert('Datos de inicio de sesion incorrectos!')
-        console.log('Error al iniciar la sesión');
-      }
+    } else {
+      alert('Datos de inicio de sesion incorrectos!')
+      console.log('Error al iniciar la sesión');
+    }
 
     // } catch (error) {
     //   console.log('Error al realizar la petición');
@@ -48,7 +49,7 @@ const Login = () => {
 
   return (
     <>
-      <NavBar />
+      <TopBar />
       <div className="w-[346px] flex flex-col items-center py-10 m-auto">
         <img
           className="rounded-t-[15px] shadow-lg"
@@ -84,7 +85,7 @@ const Login = () => {
               <button type="submit" className="bg-tertiary-color rounded-full p-2 text-lg text-white">
                 Aceptar
               </button>
-          fo</div>
+              fo</div>
           </form>
           <div className="flex gap-2 items-center">
             <p>No tienes cuenta?</p>
