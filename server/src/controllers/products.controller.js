@@ -18,9 +18,10 @@ const getProducts = async (req, res) => {
           }
         },
         {
-          model: Photo, attributes: {
-            exclude: []
-          }
+          model: Photo, attributes: ['name'],
+            through: {
+              attributes: [],
+            }
         }
       ],
       attributes: { exclude: ['idCategoryProduct'] }

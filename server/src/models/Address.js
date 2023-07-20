@@ -41,10 +41,10 @@ const Address = db.define('address', {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  idUserAddress: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
+  // idUserAddress: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  // },
 },
   {
 		initialAutoIncrement: 1,
@@ -52,8 +52,8 @@ const Address = db.define('address', {
   }
 );
 
-Address.belongsTo(User, {
-  foreignKey: "idUserAddress",
-});
+// Address.belongsTo(User, {
+//   foreignKey: "idUserAddress",
+// });
 
 module.exports = Address;

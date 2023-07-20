@@ -1,17 +1,23 @@
 const User = require('../models/User');
 const Role = require('../models/Role');
+const Address = require('../models/Address');
+const Photo = require('../models/Photo');
 
 const getUsers = async (req, res) => {
   try {
     const users = await User.findAll({
       include: [
         {
-          model: Role, attributes: {
-            exclude: ['idRol']
-          }
+          model: Role, attributes: {exclude: ['idRol']}
+        },
+        {
+          model: Address, attributes: {exclude: ['idAddress']}
+        },
+        {
+          model: Photo, attributes: {exclude: ['idPhoto']}
         }
       ],
-      attributes: {exclude: ['idRol', 'password']}
+      attributes: {exclude: ['idRol', 'password', 'idUserAddress', 'idPhoto']}
     });
     res.status(200).json(users);
   } catch (error) {
@@ -28,9 +34,7 @@ const getUserByEmail = async (req, res) => {
       where: {email: email},
       include: [
         {
-          model: Role, attributes: {
-            exclude: ['idRol']
-          }
+          model: Role, attributes: {exclude: ['idRol']}
         }
       ],
       attributes: {exclude: ['idRol']}
@@ -42,12 +46,7 @@ const getUserByEmail = async (req, res) => {
     }
 };
 
-const createUser = async (req, res) => {
-  res.send('creating user')
-}
-
 module.exports = {
   getUsers,
-  getUserByEmail,
-  createUser
+  getUserByEmail
 }
