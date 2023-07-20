@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const db = require('../config/db');
 const Role = require('./Role');
 const Photo = require('../models/Photo');
+const Address = require('../models/Address');
 
 const User = db.define('user', {
 	idUser: {
@@ -55,6 +56,10 @@ const User = db.define('user', {
 
 User.belongsTo(Role, {
     foreignKey: 'idRol',
+});
+
+User.belongsTo(Address, {
+    foreignKey: 'idUserAddress',
 });
 
 User.belongsTo(Photo, {

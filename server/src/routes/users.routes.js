@@ -7,6 +7,6 @@ const router = Router();
 
 router.get('/', getUsers);
 router.get('/mail', getUserByEmail);
-router.post('/', [verifyToken, isAdmin], createUser)
+// router.post('/', [verifyToken, isAdmin], createUser)
 
 module.exports = router;

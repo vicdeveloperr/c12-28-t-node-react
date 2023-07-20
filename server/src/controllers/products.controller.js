@@ -1,6 +1,7 @@
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const User = require('../models/User');
+const Photo = require('../models/Photo');
 
 const getProducts = async (req, res) => {
   try {
@@ -15,6 +16,12 @@ const getProducts = async (req, res) => {
           model: User, attributes: {
             exclude: ['idUser', 'email', 'password', 'idRol']
           }
+        },
+        {
+          model: Photo, attributes: ['name'],
+            through: {
+              attributes: [],
+            }
         }
       ],
       attributes: {exclude: ['idCategoryProduct']}
@@ -27,11 +34,18 @@ const getProducts = async (req, res) => {
 
 const createProduct = async (req, res) => {
   
-  const {idProduct, name, description, stock, price, idCategoryProduct, idUserProduct} = req.body;
+  const { name, description, stock, price, idCategoryProduct, idUserProduct, idPhoto } = req.body;
   try {
     const newProduct = await Product.create({
-      idProduct, name, description, stock, price, idCategoryProduct, idUserProduct
+      name, description, stock, price, idCategoryProduct, idUserProduct
     });
+
+    const photoDb = await Photo.findAll({
+      where: { idPhoto }
+    })
+
+    newProduct.addPhoto(photoDb);
+
     res.status(201).json(newProduct);
   } catch (error) {
     console.log(error);    

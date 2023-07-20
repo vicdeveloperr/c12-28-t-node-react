@@ -25,6 +25,15 @@ const preloadData = async () => {
     await Photo.create({
       name: 'https://i.pinimg.com/564x/e1/70/9b/e1709bc86114102d04cf73089946ceda.jpg'
     });
+    await Photo.create({
+      name: 'https://images.start.com.ar/SM-S918BZKMARO-4.jpg'
+    });
+    await Photo.create({
+      name: 'https://images.samsung.com/es/smartphones/galaxy-s23-ultra/buy/02_Image_Carousel/02-5_Offer_KV_General_Trade-in/S23Ultra_offerkv_tradein_PC.jpg'
+    });
+    await Photo.create({
+      name: 'https://images.samsung.com/es/smartphones/galaxy-s23-ultra/buy/02_Image_Carousel/02-3_Group_KV_Exclusive_Color/S23Ultra_groupkv_exclusive_PC.jpg'
+    });
   }
   
   /*** Precarga modelo Metodo de Pago ***/
@@ -56,6 +65,68 @@ const preloadData = async () => {
     await Role.create({
       name: "Guest",
     });
+  }
+
+  /*** Precarga modelo Direcciones ***/
+  const addresses = await Address.findAll();
+  if (!addresses.length) {
+    await Address.bulkCreate([
+      {
+        country: 'Argentina',
+        province: 'Tucumán',
+        city: 'San Miguel de Tucumán',
+        street:'Calle 1',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '4000',
+        // idUserAddress: 1
+      },
+      {
+        country: 'Argentina',
+        province: 'Misiones',
+        city: 'Posadas',
+        street:'Calle 2',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '3300',
+        // idUserAddress: 2
+      },
+      {
+        country: 'Argentina',
+        province: 'Buenos Aires',
+        city: 'Buenos Aires',
+        street:'Calle 3',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '1228',
+        // idUserAddress: 3
+      },
+      {
+        country: 'Paraguay',
+        province: 'Alta Parana',
+        city: 'Ciudad del Este',
+        street:'Calle 4',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '7000',
+        // idUserAddress: 4
+      },
+      {
+        country: 'Argentina',
+        province: 'Misiones',
+        city: 'Posadas',
+        street:'Calle 5',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '3300',
+        // idUserAddress: 5
+      },
+    ])
   }
  
   /*** Precarga modelo Categorias ***/
@@ -89,7 +160,6 @@ const preloadData = async () => {
       }
     ])
   }
-   
 
   /*** Precarga modelo Usuarios ***/
   const users = await User.findAll();
@@ -126,7 +196,7 @@ const preloadData = async () => {
         phone: '123456',
         idRol: 1,
         idPhoto: 3,
-        idUserAddress: 3
+        idUserAddress: 4
       },
       {
         user: 'alondra',
@@ -137,7 +207,7 @@ const preloadData = async () => {
         phone: '123456',
         idRol: 2,
         idPhoto: 4,
-        idUserAddress: 4
+        idUserAddress: 3
       },
       {
         user: 'elias',
@@ -153,68 +223,6 @@ const preloadData = async () => {
   ])
   }
 
-  /*** Precarga modelo Direcciones ***/
-  const addresses = await Address.findAll();
-  if (!addresses.length) {
-    await Address.bulkCreate([
-      {
-        country: 'Argentina',
-        province: 'Tucumán',
-        city: 'San Miguel de Tucumán',
-        street:'Calle 1',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '4000',
-        idUserAddress: 1
-      },
-      {
-        country: 'Argentina',
-        province: 'Misiones',
-        city: 'Posadas',
-        street:'Calle 2',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '3300',
-        idUserAddress: 2
-      },
-      {
-        country: 'Argentina',
-        province: 'Buenos Aires',
-        city: 'Buenos Aires',
-        street:'Calle 3',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '1228',
-        idUserAddress: 3
-      },
-      {
-        country: 'Paraguay',
-        province: 'Alta Parana',
-        city: 'Ciudad del Este',
-        street:'Calle 4',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '7000',
-        idUserAddress: 4
-      },
-      {
-        country: 'Argentina',
-        province: 'Misiones',
-        city: 'Posadas',
-        street:'Calle 5',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '3300',
-        idUserAddress: 5
-      },
-    ])
-  }
-
   /*** Precarga modelo Productos ***/
   const products = await Product.findAll();
   if (!products.length) {
@@ -228,11 +236,7 @@ const preloadData = async () => {
         detail_1: 'detail 1',
         idCategoryProduct: 4,
         idUserProduct: 2,
-        photos: [
-        {
-          name: "lkjkldfjkldjfldkjf"    
-        }
-      ]
+        idPhoto: [6,7,8]
       },
       {
         name: 'Monitor LG 23" ',
