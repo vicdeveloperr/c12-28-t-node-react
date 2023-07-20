@@ -14,6 +14,7 @@ const Photo = db.define('photo', {
     },
 },
     {
+        initialAutoIncrement: 1,
         timestamps: false
     });
 

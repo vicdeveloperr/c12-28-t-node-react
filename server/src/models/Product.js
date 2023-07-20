@@ -102,6 +102,7 @@ const Product = db.define('product', {
   }
 },
   {
+    initialAutoIncrement: 1,
     timestamps: false
   });
 
