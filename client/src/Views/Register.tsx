@@ -5,6 +5,7 @@ export default function Register() {
   return (
     <>
       <TopBar />
+      
       <div className="py-8 w-[346px] m-auto">
         <div className="rounded-sm flex flex-col justify-center items-center ">
           <img
