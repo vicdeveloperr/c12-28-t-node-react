@@ -5,6 +5,7 @@ import Login from "../views/Login";
 import Landing from "../views/Landing";
 import Input from "../components/common/Input";
 import Perfil from "../views/Perfil";
+import Detail from "../views/Detail";
 
 function Router() {
     return (
@@ -15,6 +16,7 @@ function Router() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/detail" element={<Detail />} />
         </Routes>
     </BrowserRouter>
     );
