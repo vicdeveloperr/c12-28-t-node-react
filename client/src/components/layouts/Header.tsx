@@ -1,12 +1,12 @@
 //@ts-ignore
-import NavBar from "../common/NavBar"
+import NavBar from "../common/NavBar";
 
 function Header() {
-    return (
-        <header>
-            <NavBar />
-        </header>
-    );
+  return (
+    <header>
+      <NavBar />
+    </header>
+  );
 }
 
 export default Header;
