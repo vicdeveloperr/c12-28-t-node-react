@@ -55,7 +55,11 @@ const getProduct = async (req, res) => {
         attributes: { exclude: ['idCategoryProduct'] } */
       }
     );
-    res.status(200).json(product);
+    if (product) {
+      res.status(200).json(product);
+    } else {
+      return res.status(400).send('product not found');
+    }
   } catch (error) {
     console.log(error);
   }
@@ -149,7 +153,7 @@ const deleteProduct = async (req, res) => {
       } */
       await Product.destroy({
         where: { idProduct: id },
-        include: Photo
+        include: [Photo]
       })
       return res.status(202).send('Product deleted');
     } else {
