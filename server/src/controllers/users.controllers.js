@@ -2,6 +2,7 @@ const User = require('../models/User');
 const Role = require('../models/Role');
 const Address = require('../models/Address');
 const Photo = require('../models/Photo');
+const {Op} = require('sequelize')
 
 const getUsers = async (req, res) => {
   try {
@@ -25,13 +26,43 @@ const getUsers = async (req, res) => {
     }
 };
 
+const getUser = async (req, res) => {
+  const {id} = req.params
+  try {
+    const user = await User.findOne({
+      where: {
+        userId: id
+      },
+      include: [
+        {
+          model: Role, attributes: {exclude: ['idRol']}
+        },
+        {
+          model: Address, attributes: {exclude: ['idAddress']}
+        },
+        {
+          model: Photo, attributes: {exclude: ['idPhoto']}
+        }
+      ],
+      attributes: {exclude: ['idRol', 'password', 'idUserAddress', 'idPhoto']}
+    });
+    res.status(200).json(user);
+  } catch (error) {
+      console.log(error);
+    }
+};
+
 const getUserByEmail = async (req, res) => {
 
   const {email} = req.query;
 
   try {
     const userfound = await User.findOne({
-      where: {email: email},
+      where: {
+        email: {
+          [Op.like]: `%${email}%`
+        }
+      },
       include: [
         {
           model: Role, attributes: {exclude: ['idRol']}
@@ -48,5 +79,6 @@ const getUserByEmail = async (req, res) => {
 
 module.exports = {
   getUsers,
+  getUser,
   getUserByEmail
 }

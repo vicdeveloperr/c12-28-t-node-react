@@ -14,7 +14,7 @@ const getProducts = async (req, res) => {
         },
         {
           model: User, attributes: {
-            exclude: ['idUser', 'email', 'password', 'idRol']
+            exclude: ['idUser', 'email', 'password', 'idRol', 'idUserAddress', 'idPhoto', 'photo']
           }
         },
         {
@@ -31,6 +31,7 @@ const getProducts = async (req, res) => {
     console.log(error);
   }
 }
+
 const getProduct = async (req, res) => {
   const id = req.params.id;
   try {
