@@ -2,7 +2,55 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./SearchBar";
 import Container from "./Container";
-import { useTopBarStore } from "../../stateManagemet/stores";
+import { create } from "zustand";
+
+type elementsInTopBarElement = "sideBarNavToglerElement" | "logoElement" | "searchBarElement" | "searchBarToglerElement";
+type topBarStore = {
+    sideBarNavToglerElement: boolean,
+    logoElement: boolean,
+    searchBarToglerElement: boolean,
+    searchBarElement: boolean,
+    hiddenElements: (elements: Array<elementsInTopBarElement>) => void,
+    showElements: (elements: Array<elementsInTopBarElement>) => void
+}
+const useTopBarStore = create<topBarStore>()((set) => ({
+    sideBarNavToglerElement: true,
+    searchBarToglerElement: true,
+    logoElement: true,
+    searchBarElement: true,
+    hiddenElements: (elements) => set(() => {
+        const elementsVisible = {
+            sideBarNavToglerElement: true,
+            logoElement: true,
+            searchBarElement: true,
+            searchBarToglerElement: true
+        }
+
+        elements.map((element) => {
+            if(element in elementsVisible){
+                elementsVisible[element] = false;
+            }
+        })
+
+        return elementsVisible
+    }),
+    showElements: (elementsToHide) => set(() => {
+            const elements = {
+                sideBarNavToglerElement: true,
+                logoElement: true,
+                searchBarElement: true,
+                searchBarToglerElement: true
+            }
+    
+            elementsToHide.map((element) => {
+                if(element in elements){
+                    elements[element] = false;
+                }
+            })
+    
+            return elements
+    })
+}));
 
 function TopBar() {
   const { searchBarElement, sideBarNavToglerElement, logoElement, hiddenElements, searchBarToglerElement} = useTopBarStore(state => state)
@@ -47,6 +95,7 @@ function TopBar() {
     const searchBarElement: HTMLElement | null = document.querySelector("#searchBar");
     if(searchBarElement) {
       searchBarElement.classList.remove("hidden")
+      searchBarElement.classList.add("flex")
     }
     hiddenElements(["logoElement", "sideBarNavToglerElement", "searchBarToglerElement"])
   }
