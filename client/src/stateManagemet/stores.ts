@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import axios, { AxiosResponse } from 'axios'
 
 const API_URL = 'http://localhost:3001'
 
@@ -16,13 +15,25 @@ interface Category {
   state: boolean;
 }
 
-export const userStore = create((set) => ({
-  user: null,
+type userStore = {
+  userData: User,
+  getUser: () => void
+}
+
+export const useUserStore = create<userStore>()((set) => ({
+  userData: {
+    name: "",
+    lastName: "",
+    email: ""
+  },
 
   getUser: () => {
-    const user = axios.get(`${API_URL}/mail`)
-
-    set(() => ({ user: user }))
+    fetch(`${API_URL}/mail`)
+      .then(response => response.json())
+      .then(data => {
+        set(() => ({ userData: data.data }))
+      })
+      .catch(error => console.log(error))
   },
 }))
 

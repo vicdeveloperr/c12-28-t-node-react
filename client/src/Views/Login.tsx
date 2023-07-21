@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import Footer from "../components/common/Footer";
-import NavBar from "../components/common/NavBar";
+import TopBar from "../components/common/TopBar";
 
 const Login = () => {
   const [email, setEmail] = useState("");

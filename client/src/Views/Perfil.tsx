@@ -7,7 +7,8 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 import fotoUser from "../assets/foto-de-perfil.png";
 import { create } from "zustand";
 import Button from "../components/common/Button";
-import { useState } from "react";
+import { useUserStore } from "../stateManagemet/stores";
+import useLoadUserData from "../utils/useLoadUserData"
 
 type perfilViewStore = {
     editMode: boolean,
@@ -57,6 +58,7 @@ const useFormUserPersonalDataStore = create<formUserPersonalDataStore>()((set) =
 function Perfil() {
     const { editMode, changeMode } = usePerfilViewStore(state => state);
     const { inputUserCompleteName, inputUserCountry, inputUserLocation, inputUserPhoneNumber, onChangeInput } = useFormUserPersonalDataStore(state => state);
+    const userData = useLoadUserData();
 
     type typeSectionItemProps = { textLabel: string, inputId: string, inputName?: string, inputValue: string, inputDisable: boolean, inputType?: string, handler?: (e: React.ChangeEvent<HTMLInputElement>) => void };
 
@@ -90,7 +92,7 @@ function Perfil() {
                         inputDisable={true} 
                         textLabel="Nombre completo:" 
                         inputId="userCompleteName" 
-                        inputValue="Juan Ramón Peréz Godoy" />
+                        inputValue={userData.name} />
                     <SectionItem 
                         inputDisable={true}
                         textLabel="Dirección:" 
