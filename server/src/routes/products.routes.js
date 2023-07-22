@@ -12,6 +12,6 @@ router.get('/:id', getProduct);
 router.post('/', /* [verifyToken, isUser], */ createProduct);
 router.put('/:id', editProductPhoto);
 router.delete('/:id', /* [verifyToken, isUser], */ deleteProduct);
-// router.put('/productId', controllers.postProduct);
+
 
 module.exports = router;

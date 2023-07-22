@@ -31,7 +31,7 @@ const getUser = async (req, res) => {
   try {
     const user = await User.findOne({
       where: {
-        userId: id
+        idUser: id
       },
       include: [
         {

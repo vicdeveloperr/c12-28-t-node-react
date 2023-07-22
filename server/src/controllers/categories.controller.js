@@ -1,7 +1,7 @@
 const Category = require('../models/Category');
 
 const getCategories = async (req, res) => {
-	const {name} = req.query
+	const {name} = req.query;
   try {
     const categories = await Category.findAll();
 		if (name) {
