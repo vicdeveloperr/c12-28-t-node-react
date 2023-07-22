@@ -1,7 +1,10 @@
+const Sequelize = require('sequelize');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const User = require('../models/User');
 const Photo = require('../models/Photo');
+
+const Op = Sequelize.Op;
 
 const getProducts = async (req, res) => {
   try {
@@ -19,7 +22,7 @@ const getProducts = async (req, res) => {
         },
         {
           model: Photo, attributes: {
-            exclude: []
+            exclude: ['idPhoto']
           }
         }
       ],
@@ -37,26 +40,100 @@ const getProduct = async (req, res) => {
       {
         include: [
           {
-            model: Category/* , attributes: {
+            model: Category, attributes: {
               exclude: ['idCategory', 'description', 'state']
-            } */
+            }
           },
           {
-            model: User/* , attributes: {
-              exclude: ['idUser', 'email', 'password', 'idRol']
-            } */
+            model: User, attributes: {
+              exclude: ['idUser', 'password', 'idRol', 'phone',
+                'idUserAddress', 'email', 'firstName', 'lastName', 'idPhoto']
+            }
           },
           {
-            model: Photo/* , attributes: {
-              exclude: []
-            } */
+            model: Photo, attributes: {
+              exclude: ['idPhoto']
+            }
           }
-        ]/* ,
-        attributes: { exclude: ['idCategoryProduct'] } */
+        ],
+        attributes: { exclude: ['idCategoryProduct'] }
       }
     );
     if (product) {
       res.status(200).json(product);
+    } else {
+      return res.status(400).send('product not found');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const getProductByName = async (req, res) => {
+  const { name } = req.params;
+  try {
+    const product = await Product.findAll({
+      where: {
+        name: { [Op.like]: `%${name}%` }
+      },
+      include: [
+        {
+          model: Category, attributes: {
+            exclude: ['idCategory', 'description', 'state']
+          }
+        },
+        {
+          model: User, attributes: {
+            exclude: ['idUser', 'password', 'idRol', 'phone',
+              'idUserAddress', 'email', 'firstName', 'lastName', 'idPhoto']
+          }
+        },
+        {
+          model: Photo, attributes: {
+            exclude: ['idPhoto']
+          }
+        }
+      ],
+      attributes: { exclude: ['idCategoryProduct'] }
+    }
+    );
+    if (product) {
+      res.status(200).json(product);
+    } else {
+      return res.status(400).send('product not found');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+const getProductByCategory = async (req, res) => {
+  const { idCategory } = req.params;
+  try {
+    const products = await Product.findAll({
+      where: { idCategoryProduct: idCategory },
+      include: [
+        {
+          model: Category, attributes: {
+            exclude: ['idCategory', 'description', 'state']
+          }
+        },
+        {
+          model: User, attributes: {
+            exclude: ['idUser', 'password', 'idRol', 'phone',
+              'idUserAddress', 'email', 'firstName', 'lastName', 'idPhoto']
+          }
+        },
+        {
+          model: Photo, attributes: {
+            exclude: ['idPhoto']
+          }
+        }
+      ],
+      attributes: { exclude: ['idCategoryProduct'] }
+    }
+    );
+    if (products) {
+      res.status(200).json(products);
     } else {
       return res.status(400).send('product not found');
     }
@@ -102,7 +179,7 @@ const editProductPhoto = async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }
-
+    //product.set(req.body)
     product.name = name;
     product.description = description;
     product.stock = stock;
@@ -125,6 +202,7 @@ const editProductPhoto = async (req, res) => {
     product.detail_8 = detail_8;
     product.idCategoryProduct = idCategoryProduct;
     product.idUserProduct = idUserProduct;
+
     await product.save();
 
     const photosToUpdate = product.photos.map((photo, i) => {
@@ -147,10 +225,12 @@ const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findOne({ where: { idProduct: id } });
     if (product) {
-      /* const photosToDelete = await Photo.findAll({ where: { idPhoto: product_photo.photoIdPhoto product.idProduct } });
+      /* const photosToDelete = await Photo.findAll({ where: { idPhoto: product.idProduct } });
       for (const photo of photosToDelete) {
         await photo.destroy();
       } */
+      // await product.removePhotos();
+      //await product.destroy({ cascade: true });
       await Product.destroy({
         where: { idProduct: id },
         include: [Photo]
@@ -167,6 +247,8 @@ const deleteProduct = async (req, res) => {
 module.exports = {
   getProducts,
   getProduct,
+  getProductByName,
+  getProductByCategory,
   createProduct,
   editProductPhoto,
   deleteProduct
