@@ -1,11 +1,8 @@
-import { Link } from "react-router-dom";
+
 import Header from "../components/layouts/Header";
 import Footer from "../components/common/Footer";
 import CartCard from "../components/common/CartCard";
-import Button from "../components/common/Button";
 
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Cart() {
   return (
@@ -29,7 +26,7 @@ function Cart() {
                         <p className="font-medium text-secondary-color">Importe de los productos: <span className="font-medium text-secondary-color text-right">$123.00</span></p>
                         <p className="font-medium text-secondary-color">Gastos de envío: <span className="font-medium text-secondary-color text-right">-</span></p>
                         <h4 className="text-secondary-color font-bold text-h4">Total a pagar: <span className="font-medium text-secondary-color text-right">$123.00</span></h4>
-                    </div> 
+                    </div>
                 </div>
                 <button className="rounded-md bg-secondary-color text-white font-bold p-4 mt-4 ">Continuar con la compra</button>
               </div>
