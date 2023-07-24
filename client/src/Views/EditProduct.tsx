@@ -4,21 +4,22 @@ import Footer from "../components/common/Footer";
 import Input from "../components/common/Input";
 import { Carousel } from 'flowbite-react';
 
-function Detail() {
+
+function EditProduct() {
   return (
       <>
           <Header />
-          <div className="mt-20 px-16 space-x-8">
+          <div className="mt-20 px-4 md:px-16">
             <h1 className="text-h3 text-secondary-color font-extrabold mb-4">Crear producto</h1>
-            <div className="flex">
-              <div className="w-1/2 h-96 p-4">
+            <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+              <div className="w-full md:w-1/2 h-96 p-4">
                   <Carousel>
                       <img className="w-full h-auto" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Imagen 1" />
                       <img className="w-full h-auto" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Imagen 2" />
                       <img className="w-full h-auto" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80ruta-a-la-imagen-3.jpg" alt="Imagen 3" />
                   </Carousel>
               </div>
-              <div className="w-1/2 p-4 bg-light-blue-color">
+              <div className="w-full md:w-1/2 p-4 bg-light-blue-color">
                   <h2 className="text-h4 text-secondary-color font-extrabold">Nombre del producto</h2>
                   <Input color="secondary-color" inputId="" inputName=""></Input>
                   <h2 className="text-h4 text-secondary-color font-extrabold mt-3">Precio</h2>
@@ -57,6 +58,6 @@ function Detail() {
   );
 }
 
-export default Detail;
+export default EditProduct;
 
   
