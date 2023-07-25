@@ -28,10 +28,11 @@ export const useUserStore = create<userStore>()((set) => ({
   },
 
   getUser: () => {
-    fetch(`${API_URL}/mail`)
+    fetch(`${API_URL}/users`)
       .then(response => response.json())
       .then(data => {
-        set(() => ({ userData: data.data }))
+        // set(() => ({ userData: data.data[0] }))
+        console.log(data)
       })
       .catch(error => console.log(error))
   },
