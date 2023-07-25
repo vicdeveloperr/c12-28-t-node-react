@@ -20,7 +20,8 @@ const getUsers = async (req, res) => {
 };
 
 const getUserByEmail = async (req, res) => {
-  const { email } = req.query;
+  const { email } = req.params;
+
   try {
     const userfound = await User.findOne({
       where: { email: email },
@@ -46,8 +47,6 @@ const createUser = async (req, res) => {
 
   return res.send('Hello world')
 }
-
-
 
 module.exports = {
   getUsers,

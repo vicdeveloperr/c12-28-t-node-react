@@ -1,7 +1,5 @@
 import { create } from 'zustand'
-import axios, { AxiosResponse } from 'axios'
-
-const API_URL = 'http://localhost:3001'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 interface User {
   name: string;
@@ -9,39 +7,26 @@ interface User {
   email: string;
 }
 
-interface Category {
-  idCategory: number;
-  name: string;
-  description: string;
-  state: boolean;
+interface UserStore {
+  user: User;
+  addUser: (obj: User) => void;
 }
 
-export const userStore = create((set) => ({
-  user: null,
+export const userStore = create(persist<UserStore>(
+  (set, get) => ({
+    user: {
+      name: "",
+      lastName: "",
+      email: ""
+    },
 
-  getUser: () => {
-    const user = axios.get(`${API_URL}/mail`)
-
-    set(() => ({ user: user }))
-  },
-}))
-
-export const categoriesStore = create((set) => ({
-  categories: [],
-
-  getCategories: async () => {
-    const categories = await axios.get(`${API_URL}/categories`)
-
-    set(() => ({ categories: categories }))
+    addUser: (loggedUser: User) => {
+      set({ user: { ...get().user, ...loggedUser } })
+    },
+    // crear funcion para editar los datos del usuario
+  }),
+  {
+    name: 'user-storage',
+    storage: createJSONStorage(() => localStorage)
   }
-}))
-
-export const productsStore = create((set) => ({
-  products: [],
-
-  getProducts: async () => {
-    const products = await axios.get(`${API_URL}/products`)
-
-    set(() => ({ products: products }))
-  }
-}))
+))

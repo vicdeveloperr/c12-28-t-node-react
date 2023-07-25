@@ -19,7 +19,7 @@ const signUp = async (req, res) => {
     firstName,
     lastName,
     password: encryptPassword, // -> password encriptado
-    idRol: idRol || 4
+    idRol: idRol || 2
   });
   // genero token para el usuario que se loguea correctamente
   const token = jwt.sign({ id: newUser.idUser }, process.env.SECRET, {
@@ -51,7 +51,7 @@ const signIn = async (req, res) => {
   const token = jwt.sign({ id: userFound.idUser }, process.env.SECRET, {
     expiresIn: 86400
   })
-  res.json({ message: `Usuario ${userFound.user} autenticado`, token: token });
+  res.json({ message: `Usuario ${userFound.user} autenticado`, token: token, user: userFound });
 }
 
 module.exports = {

@@ -1,20 +1,17 @@
 import Footer from "../components/common/Footer";
 import TopBar from "../components/common/TopBar";
 import ProductCard from "../components/common/ProductCard";
-import Girl from "../assets/technology 1.png"
-import SideBarNav from "../components/common/SideBarNav";
+import Girl from "../assets/technology 1.png";
+import SideBarNav from "../Components/common/SideBarNav";
 
 export default function Landing() {
   return (
     <div className="">
-      <TopBar />  
+      <TopBar />
 
       <SideBarNav />
-  
-      <section
-        id="hero-section"
-        className=" flex h-screen bg-white "
-      >
+
+      <section id="hero-section" className=" flex h-screen bg-white ">
         <div className="p-16 flex flex-col gap-3 pt-32 w-1/2">
           <h1 className="text-3xl w-[18ch] text-blue-950 font-extrabold leading-tight">
             Todos tus productos en un sólo lugar!
@@ -45,9 +42,9 @@ export default function Landing() {
           </p>
 
           <div id="lista-ofertas" className="flex gap-6 justify-center mt-10">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
           </div>
 
           <button className="rounded-md bg-blue-950 text-white font-bold p-4 w-52 mt-10 mx-auto">

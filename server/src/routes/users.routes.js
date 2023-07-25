@@ -6,7 +6,7 @@ const { verifyToken, isAdmin } = require('../middlewares/authJwt');
 const router = Router();
 
 router.get('/', getUsers);
-router.get('/mail', getUserByEmail);
+router.get('/:email', getUserByEmail);
 router.post('/', [verifyToken, isAdmin], createUser)
 
 module.exports = router;

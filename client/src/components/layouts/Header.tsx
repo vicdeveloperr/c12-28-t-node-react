@@ -1,10 +1,9 @@
-//@ts-ignore
-import NavBar from "../common/NavBar";
+import TopBar from "../common/TopBar";
 
 function Header() {
   return (
     <header>
-      <NavBar />
+      <TopBar />
     </header>
   );
 }
