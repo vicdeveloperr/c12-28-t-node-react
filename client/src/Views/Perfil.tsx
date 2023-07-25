@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { userStore } from "../stateManagemet/stores";
+import { faPen, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { useUserStore } from "../stateManagemet/useUserStore";
 
 import Input from "../components/common/Input";
 import SideBarNav from "../components/common/SideBarNav";
@@ -61,7 +61,7 @@ const useFormUserPersonalDataStore = create<formUserPersonalDataStore>()(
 );
 
 function Perfil() {
-  const loggedUser = userStore(state => state.user);
+  const loggedUser = useUserStore(state => state.user);
 
   const { editMode, changeMode } = usePerfilViewStore(state => state);
   const {
@@ -131,7 +131,7 @@ function Perfil() {
   }
 
   function UserPersonalDataSection() {
-    const loggedUser = userStore(state => state.user);
+    const loggedUser = useUserStore(state => state.user);
 
     if (!editMode) {
       return (
@@ -228,10 +228,19 @@ function Perfil() {
           </h1>
           {/* Contenedor de la sección datos de la cuenta y foto del usuario */}
           <div className="flex justify-between max-h-min">
-            <img
-              className="hidden md:inline-block rounded aspect-square max-w-[180px] overflow-hidden mr-10 shadow-md shadow-secondary-color/50"
-              src={fotoUser}
-            ></img>
+            <div className="relative">
+              <img
+                className="hidden md:inline-block rounded aspect-square max-w-[180px] overflow-hidden mr-10 shadow-md shadow-secondary-color/50"
+                src={fotoUser}
+                alt="Foto de perfil"
+              ></img>
+              <button>
+                <FontAwesomeIcon
+                  icon={faUpload}
+                  className="absolute bottom-4 right-0 w-28"
+                />
+              </button>
+            </div>
             {/* Sección datos de la cuenta */}
             <Section className="w-full flex flex-col justify-center">
               <h4 className="text-h4 text-primary-color font-bold">

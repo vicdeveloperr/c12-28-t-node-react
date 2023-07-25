@@ -21,6 +21,7 @@ function Router() {
         <Route path="/products" element={<Products />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/perfil" element={<Perfil />} />
+        {/* Cambiar perfil a profile */}
         <Route path="/productform" element={<EditProduct />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>

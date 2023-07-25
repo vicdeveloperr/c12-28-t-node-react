@@ -1,7 +1,19 @@
 import Button from "./Button";
 import { Link } from "react-router-dom";
 
-export default function ProductCard() {
+export default function ProductCard({
+  id,
+  name,
+  description,
+  price,
+  stock,
+}: {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  stock: number;
+}) {
   return (
     <div className="rounded-md bg-white w-80 shadow-sm hover:bg-blue-100 text-left">
       <img
@@ -11,15 +23,10 @@ export default function ProductCard() {
       />
       <div className="flex flex-col p-4">
         <h5 className="text-primary-color font-medium">Categoría</h5>
-        <h4 className="text-secondary-color font-bold text-h3">Auriculares</h4>
-        <p className="font-light my-3">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
-          tenetur esse aliquam asperiores numquam laboriosam omnis eius aut
-          quisquam, minima labore voluptas ad! Quas ab in quaerat velit cumque
-          repellendus!
-        </p>
-        <p className="font-medium text-secondary-color">10 Disponibles</p>
-        <h6 className="text-secondary-color font-bold text-h4">$10.000</h6>
+        <h4 className="text-secondary-color font-bold text-h3">{name}</h4>
+        <p className="font-light my-3">{description}</p>
+        <p className="font-medium text-secondary-color">{stock} Disponibles</p>
+        <h6 className="text-secondary-color font-bold text-h4">${price}</h6>
         <Link to="/detail">
           <Button color="primary-color">Ver más</Button>
         </Link>
