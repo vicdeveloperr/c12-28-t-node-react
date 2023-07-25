@@ -2,7 +2,7 @@ import Footer from "../components/common/Footer";
 import TopBar from "../components/common/TopBar";
 import ProductCard from "../components/common/ProductCard";
 import Girl from "../assets/technology 1.png";
-import SideBarNav from "../Components/common/SideBarNav";
+import SideBarNav from "../components/common/SideBarNav";
 
 export default function Landing() {
   return (
