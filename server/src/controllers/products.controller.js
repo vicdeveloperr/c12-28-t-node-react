@@ -89,11 +89,12 @@ const createProduct = async (req, res) => {
 };
 
 const editProductPhoto = async (req, res) => {
-  const { idProduct, name, description, stock, price, topic_1, detail_1, topic_2, detail_2, topic_3, detail_3,
+  const {id} = req.params;
+  const { name, description, stock, price, topic_1, detail_1, topic_2, detail_2, topic_3, detail_3,
     topic_4, detail_4, topic_5, detail_5, topic_6, detail_6, topic_7, detail_7, topic_8, detail_8,
     idCategoryProduct, idUserProduct, photos } = req.body;
   try {
-    const product = await Product.findByPk(idProduct, {
+    const product = await Product.findByPk(id, {
       include: { model: Photo, as: 'photos' }
     });
 
