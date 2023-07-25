@@ -22,11 +22,11 @@ function Cart() {
                 <h1 className="text-h3 text-secondary-color font-extrabold mb-4">Resumen de la compra</h1>
 
                 <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                    <div className="w-full md:w-1/2 h-auto">
-                        <p className="font-medium text-secondary-color">Cantidad de productos: <span className="font-medium text-secondary-color text-right">2</span></p>
+                    <div className="w-full h-auto">
+                        <p className="font-medium text-secondary-color">Cantidad de productos: <span className="font-medium text-secondary-color">2</span></p>
                         <p className="font-medium text-secondary-color">Importe de los productos: <span className="font-medium text-secondary-color text-right">$123.00</span></p>
                         <p className="font-medium text-secondary-color">Gastos de envío: <span className="font-medium text-secondary-color text-right">-</span></p>
-                        <h4 className="text-secondary-color font-bold text-h4">Total a pagar: <span className="font-medium text-secondary-color text-right">$123.00</span></h4>
+                        <h4 className="text-secondary-color font-bold text-h4">Total a pagar: <span className="text-secondary-color font-bold text-h4">$123.00</span></h4>
                     </div>
                 </div>
                 <button className="rounded-md bg-secondary-color text-white font-bold p-4 mt-4 ">Continuar con la compra</button>
