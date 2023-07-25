@@ -29,7 +29,7 @@ Favorite.belongsTo(User, {
   foreignKey: 'idUserFavorite'
 });
 
-Favorite.hasMany(Product, {
+Favorite.belongsTo(Product, {
   foreignKey: 'idProductFavorite'
 })
 

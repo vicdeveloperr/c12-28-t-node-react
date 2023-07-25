@@ -12,14 +12,14 @@ const signUp = async (req, res) => {
   // encriptar password
   let salt = await bcrypt.genSalt(10);
   let encryptPassword = await bcrypt.hash(password, salt);
-  // creo nuevo usuario -> si no especifico rol se asigna rol invitado (id: 4)
+  // creo nuevo usuario -> si no especifico rol se asigna rol guest (id: 3)
   const newUser = await User.create({
     user,
     email,
     firstName,
     lastName,
     password: encryptPassword, // -> password encriptado
-    idRol: idRol || 4
+    idRol: idRol || 2
   });
   // genero token para el usuario que se loguea correctamente
   const token = jwt.sign({ id: newUser.idUser }, process.env.SECRET, {
@@ -41,7 +41,7 @@ const signIn = async (req, res) => {
 
   // si no existe envío mensaje
   if (!userFound) return res.status(400).json({ message: 'User not found' })
-  console.log(userFound.idUser)
+  
   // si existe verifico password encriptado
   let matchPassword = await bcrypt.compare(password, userFound.password)
 
@@ -51,7 +51,7 @@ const signIn = async (req, res) => {
   const token = jwt.sign({ id: userFound.idUser }, process.env.SECRET, {
     expiresIn: 86400
   })
-  res.json({ message: `Usuario ${userFound.user} autenticado`, token: token });
+  res.json({ message: `Usuario ${userFound.user} autenticado`, token: token, user: userFound });
 }
 
 module.exports = {

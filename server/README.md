@@ -1,12 +1,10 @@
-# api-concerts
+# E-Commerce Fullstack app
 
 # ENDPOINTS FUNCIONANDO:
 
-#### IMPORTANTE! SI LIMPIAN SU BDD, ES IMPORTANTE CREAR LOS REGISTROS EN ESTE ORDEN PARA QUE DEN BIEN LAS RELACIONES:
+#### IMPORTANTE! UNA VEZ HECHA LA PRECARGA EN LA BASE DE DATOS, CAMBIAR LA OPCIÓN A db.sync({ force: false }) EN index.js PARA NO BORRAR LOS DATOS AL REINICAR EL BACKEND.
 
-##### GENRE - ARTIST - STAGE - EVENT
-
-## <u>GENRE</u>
+## <u>PRODUCTS</u>
 
 ### POST http://localhost:3001/genre
 
@@ -62,7 +60,7 @@ Responde con un onjeto. Envía los detalles del género cuyo ID se envió por pa
 }
 ```
 
-## <u>ARTIST</u>
+## <u>USERS</u>
 
 ### POST http://localhost:3001/artist
 
@@ -162,7 +160,7 @@ Responde con un objeto. Envía los detalles del artista cuyo ID se envió por pa
 }
 ```
 
-## <u>STAGE</u>
+## <u>CATEGORIES</u>
 
 ### POST http://localhost:3001/stage
 
@@ -246,7 +244,7 @@ Responde con un objeto. Envía la información del stage cuyo ID se pasó por pa
 }
 ```
 
-## <u>EVENT</u>
+## <u>ADDRESSES</u>
 
 ### POST http://localhost:3001/event
 

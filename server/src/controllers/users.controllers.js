@@ -77,8 +77,25 @@ const getUserByEmail = async (req, res) => {
     }
 };
 
+const updateUser = async (req, res) => {
+  const {id} = req.params
+  const { user, email, firstName, lastName, phone, idUserAddress, idPhoto } = req.body;
+  try {
+    const user = await User.findOne({
+      where: { idUser: id }
+    })
+    // El método set solo actualiza la propiedad que se indica en el body
+    user.set(req.body)
+    await user.save();
+    return res.json(user);  
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   getUsers,
   getUser,
+  updateUser,
   getUserByEmail
 }

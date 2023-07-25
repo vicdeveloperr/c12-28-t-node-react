@@ -6,7 +6,12 @@ const Category = require('../models/Category');
 const Product = require('../models/Product');
 const Payment_method = require('../models/Payment_method');
 
+const bcrypt = require('bcryptjs');
+
 const preloadData = async () => {
+
+  let salt = await bcrypt.genSalt(10);
+
     /*** Precarga modelo Fotos ***/
   const photos = await Photo.findAll();
   if (!photos.length) {
@@ -168,7 +173,7 @@ const preloadData = async () => {
       {
         user: 'Ernest21',
         email: 'ernesto@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Ernesto',
         lastName: 'Villagra',
         phone: '123456',
@@ -179,7 +184,7 @@ const preloadData = async () => {
       {
         user: 'fabio',
         email: 'fabio@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Fabio',
         lastName: 'Cicerelli',
         phone: '123456',
@@ -190,7 +195,7 @@ const preloadData = async () => {
       {
         user: 'victor',
         email: 'victor@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Victor',
         lastName: 'Ayala',
         phone: '123456',
@@ -201,7 +206,7 @@ const preloadData = async () => {
       {
         user: 'alondra',
         email: 'alondra@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Alondra',
         lastName: 'Cena',
         phone: '123456',
@@ -212,7 +217,7 @@ const preloadData = async () => {
       {
         user: 'elias',
         email: 'elias@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Elias',
         lastName: 'Pereyra',
         phone: '123456',
