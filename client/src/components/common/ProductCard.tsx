@@ -1,4 +1,5 @@
-import Button from "../../Components/common/Button";
+import Button from "./Button";
+import { Link } from "react-router-dom";
 
 export default function ProductCard() {
   return (
@@ -19,7 +20,9 @@ export default function ProductCard() {
         </p>
         <p className="font-medium text-secondary-color">10 Disponibles</p>
         <h6 className="text-secondary-color font-bold text-h4">$10.000</h6>
-        <Button color="primary-color">Ver más</Button>
+        <Link to="/detail">
+          <Button color="primary-color">Ver más</Button>
+        </Link>
       </div>
     </div>
   );
