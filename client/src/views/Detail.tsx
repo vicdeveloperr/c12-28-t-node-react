@@ -7,11 +7,10 @@ import { Carousel, Rating } from "flowbite-react";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Detail({ idProduct }: { idProduct: number }) {
+function Detail() {
   return (
     <>
       <Header />
-      {idProduct}
       <div className="mt-20 px-16 space-x-8">
         <div className="flex">
           <div className="w-1/2 h-96 p-4">

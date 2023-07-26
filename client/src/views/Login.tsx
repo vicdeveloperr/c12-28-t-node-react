@@ -7,38 +7,37 @@ import TopBar from "../components/common/TopBar";
 import { userStore } from "../stateManagemet/stores";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
 
   const addUser = userStore(state => state.addUser);
   const navigate = useNavigate();
 
-  const handleEmailChange = (
+  const handleChange = (
     e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>
   ) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (
-    e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>
-  ) => {
-    setPassword(e.target.value);
+    setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:3001/auth/signin", {
-      email,
-      password,
+    const response = await fetch("http://localhost:3001/auth/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
     });
+
+    const data = await response.json();
     console.log(response);
     if (response.statusText === "OK") {
-      const { token, user } = response.data;
+      const { token, user } = data;
       console.log(token);
       addUser(user);
       localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("userSession", user);
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       navigate("/home");
@@ -73,7 +72,7 @@ const Login = () => {
                   type="email"
                   minLength={5}
                   maxLength={30}
-                  onChange={handleEmailChange}
+                  onChange={handleChange}
                   className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                 />
               </label>
@@ -86,7 +85,7 @@ const Login = () => {
                   minLength={8}
                   maxLength={32}
                   autoComplete="on"
-                  onChange={handlePasswordChange}
+                  onChange={handleChange}
                   className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                 />
               </label>
