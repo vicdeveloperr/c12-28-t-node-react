@@ -1,6 +1,6 @@
 const { Router } = require('express');
 // const controllers = require('../controllers/index');
-const { createProduct, getProducts, getProduct, editProductPhoto, deleteProduct } = require('../controllers/products.controller');
+const { createProduct, getProducts, getProduct, getProductByName, getProductByCategory, editProductPhoto, deleteProduct } = require('../controllers/products.controller');
 const { verifyToken, isUser } = require('../middlewares/authJwt');
 
 const router = Router();
@@ -8,6 +8,8 @@ const router = Router();
 // endpoint publico
 router.get('/', getProducts);
 router.get('/:id', getProduct);
+router.get('/find/:name', getProductByName);
+router.get('/category/:idCategory', getProductByCategory);
 
 router.post('/', /* [verifyToken, isUser], */ createProduct);
 router.put('/:id', editProductPhoto);

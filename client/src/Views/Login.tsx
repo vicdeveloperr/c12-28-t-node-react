@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
 import Footer from "../components/common/Footer";
 import TopBar from "../components/common/TopBar";
+import { userStore } from "../stateManagemet/stores";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const addUser = userStore(state => state.addUser);
   const navigate = useNavigate();
 
   const handleEmailChange = (
@@ -24,28 +27,27 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // try {
+
     const response = await axios.post("http://localhost:3001/auth/signin", {
       email,
       password,
     });
     console.log(response);
     if (response.statusText === "OK") {
-      const { token } = response.data;
+      const { token, user } = response.data;
       console.log(token);
+      addUser(user);
       localStorage.setItem("token", token);
-      localStorage.setItem("email", email);
+      localStorage.setItem("user", JSON.stringify(user));
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       navigate("/home");
     } else {
+      // controlar cuando el email/contraseña son incorrectos
+      // y mostrarlo al usuario
       alert("Datos de inicio de sesion incorrectos!");
       console.log("Error al iniciar la sesión");
     }
-
-    // } catch (error) {
-    //   console.log('Error al realizar la petición');
-    // }
   };
 
   return (
@@ -94,7 +96,6 @@ const Login = () => {
               >
                 Aceptar
               </button>
-              fo
             </div>
           </form>
           <div className="flex gap-2 items-center">

@@ -1,26 +1,32 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "../views/HomePage";
-import Register from "../views/Register";
-import Login from "../views/Login";
-import Landing from "../views/Landing";
-import Products from "../views/Products";
-import Perfil from "../views/Perfil";
-import Detail from "../views/Detail";
+
+import HomePage from "../Views/HomePage";
+import Register from "../Views/Register";
+import Login from "../Views/Login";
+import Landing from "../Views/Landing";
+import Detail from "../Views/Detail";
+import Products from "../Views/Products";
+import Perfil from "../Views/Perfil";
+import EditProduct from "../Views/EditProduct";
+import Cart from "../Views/Cart";
 
 function Router() {
-    return (
+  return (
     <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/perfil" element={<Perfil />} />
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/products" element={<Products/>} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/perfil" element={<Perfil />} />
+        {/* Cambiar perfil a profile */}
+        <Route path="/productform" element={<EditProduct />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
     </BrowserRouter>
-    );
+  );
 }
 
-export default Router
+export default Router;

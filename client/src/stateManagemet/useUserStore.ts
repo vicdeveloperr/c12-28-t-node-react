@@ -12,7 +12,7 @@ interface UserStore {
   addUser: (obj: User) => void;
 }
 
-export const userStore = create(persist<UserStore>(
+export const useUserStore = create(persist<UserStore>(
   (set, get) => ({
     user: {
       name: "",

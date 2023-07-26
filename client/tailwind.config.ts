@@ -31,7 +31,8 @@ export default {
       "h1": "64px",
       "h2": "44px",
       "h3": "24px",
-      "h4": "20px"
+      "h4": "20px",
+      "h5": "18px"
     }
   },
   plugins: [
