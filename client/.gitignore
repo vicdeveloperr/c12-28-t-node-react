@@ -11,7 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-src/Components/common/TopBar.tsx
 
 # Editor directories and files
 .vscode/*
