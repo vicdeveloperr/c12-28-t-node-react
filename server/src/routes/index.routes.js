@@ -13,5 +13,6 @@ router.use('/addresses', require('./addresses.routes'));
 router.use('/orders', require('./orders.routes'));
 router.use('/order_details', require('./order_details.routes'));
 router.use('/categories', require('./categories.routes'));
+router.use('/photos', require('./photos.routes'));
 
 module.exports = router;
