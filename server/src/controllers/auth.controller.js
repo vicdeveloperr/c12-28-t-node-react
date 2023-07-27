@@ -12,7 +12,7 @@ const signUp = async (req, res) => {
   // encriptar password
   let salt = await bcrypt.genSalt(10);
   let encryptPassword = await bcrypt.hash(password, salt);
-  // creo nuevo usuario -> si no especifico rol se asigna rol invitado (id: 4)
+  // creo nuevo usuario -> si no especifico rol se asigna rol guest (id: 3)
   const newUser = await User.create({
     user,
     email,
@@ -41,7 +41,7 @@ const signIn = async (req, res) => {
 
   // si no existe envío mensaje
   if (!userFound) return res.status(400).json({ message: 'User not found' })
-  console.log(userFound.idUser)
+  
   // si existe verifico password encriptado
   let matchPassword = await bcrypt.compare(password, userFound.password)
 
