@@ -14,7 +14,7 @@ db.authenticate()
 const PORT = 3001;
 
 // Sincronizar modelos y arrancar servidor
-db.sync({ force: false }).then(() => {
+db.sync({ force: true }).then(() => {
   // Precarga de datos
   preloadData();
   server.listen(PORT, () => {
