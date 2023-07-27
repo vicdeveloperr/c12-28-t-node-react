@@ -10,6 +10,7 @@ import Container from "../components/common/Container";
 import Button from "../components/common/Button";
 
 import fotoUser from "../assets/foto-de-perfil.png";
+import loadUserData from "../utils/loadUserData";
 
 type perfilViewStore = {
   editMode: boolean;
@@ -61,7 +62,7 @@ const useFormUserPersonalDataStore = create<formUserPersonalDataStore>()(
 );
 
 function Profile() {
-  const loggedUser = useUserStore(state => state.user);
+  const { userData } = useUserStore(state => state);
 
   const { editMode, changeMode } = usePerfilViewStore(state => state);
   const {
@@ -78,7 +79,7 @@ function Profile() {
     inputName?: string;
     inputValue: string;
     inputDisable: boolean;
-    inputType?: string;
+    inputType?: string | number;
     handler?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
@@ -131,7 +132,7 @@ function Profile() {
   }
 
   function UserPersonalDataSection() {
-    const loggedUser = useUserStore(state => state.user);
+    
 
     if (!editMode) {
       return (
@@ -149,7 +150,7 @@ function Profile() {
             inputDisable={true}
             textLabel="Nombre completo:"
             inputId="userCompleteName"
-            inputValue={`${loggedUser.name} ${loggedUser.lastName}`}
+            inputValue={`${userData.firstName} ${userData.lastName}`}
           />
           <SectionItem
             inputDisable={true}
@@ -161,7 +162,8 @@ function Profile() {
             inputDisable={true}
             textLabel="Teléfono:"
             inputId="userPhoneNumber"
-            inputValue="(+595) 981 023 235"
+            inputValue={`${userData.phone}`}
+            inputType="number"
           />
           <SectionItem
             inputDisable={true}
@@ -184,7 +186,7 @@ function Profile() {
             inputDisable={false}
             textLabel="Nombre completo:"
             inputId="userCompleteName"
-            inputValue={inputUserCompleteName}
+            inputValue={`${userData.firstName} ${userData.lastName}`}
             handler={e => onChangeInput(e)}
           />
           <SectionItem
@@ -224,7 +226,7 @@ function Profile() {
       <Container>
         <main className="max-w-[850px] mx-auto">
           <h1 className="text-h2 text-center py-5 text-primary-color font-bold">
-            Bienvenid@ {loggedUser.name}
+            Bienvenid@ {}
           </h1>
           {/* Contenedor de la sección datos de la cuenta y foto del usuario */}
           <div className="flex justify-between max-h-min">
@@ -250,13 +252,13 @@ function Profile() {
                 inputDisable={true}
                 textLabel="Nombre de usuario:"
                 inputId="userName"
-                inputValue="juan_perez22"
+                inputValue={userData.user}
               />
               <SectionItem
                 inputDisable={true}
                 textLabel="Correo electrónico:"
                 inputId="userEmail"
-                inputValue="juan_perez@gmail.com"
+                inputValue={userData.email}
               />
             </Section>
           </div>
