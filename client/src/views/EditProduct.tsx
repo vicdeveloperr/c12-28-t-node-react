@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "dotenv/config";
 
 import Header from "../components/layouts/Header";
 import Footer from "../components/common/Footer";
@@ -45,13 +44,16 @@ function Detail() {
   const handleUploadImage = file => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
+    formData.append(
+      "cloud_name",
+      import.meta.env.REACT_APP_CLOUDINARY_CLOUD_NAME
+    );
     formData.append(
       "upload_preset",
-      process.env.REACT_APP_CLOUDINARY_PRESET_NAME
+      import.meta.env.REACT_APP_CLOUDINARY_PRESET_NAME
     );
 
-    fetch(process.env.REACT_APP_CLOUDINARY_API_BASE_URL, {
+    fetch(import.meta.env.REACT_APP_CLOUDINARY_API_BASE_URL, {
       method: "POST",
       body: formData,
     })
