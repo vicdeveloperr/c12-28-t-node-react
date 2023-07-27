@@ -1,4 +1,4 @@
-import fotoUser from "../../assets/foto-de-perfil.png"
+import fotoUser from "../../assets/foto-de-perfil.webp"
 import { faClockRotateLeft, faHouse, faArrowRightFromBracket, faCartShopping, faUser, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useEffect } from "react";
