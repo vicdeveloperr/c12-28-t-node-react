@@ -1,8 +1,8 @@
 import Header from "../components/layouts/Header";
-import { userStore } from "../stateManagemet/stores";
+import { useUserStore } from "../stateManagemet/useUserStore";
 
 function HomePage() {
-  const loggedUser = userStore(state => state.user);
+  const loggedUser = useUserStore(state => state.user);
   console.log(loggedUser);
 
   return (

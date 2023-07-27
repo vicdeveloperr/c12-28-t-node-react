@@ -2,10 +2,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useProductStore } from "../../stateManagemet/useProductStore";
 import { useCategoriesStore } from "../../stateManagemet/useCategoriesStore";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar() {
   const categories = useCategoriesStore(state => state.categories);
   const setSearch = useProductStore(state => state.setSearch);
+  const navigate = useNavigate();
 
   return (
     <form
@@ -18,7 +20,10 @@ function SearchBar() {
         type="text"
         name="producto"
         id="producto"
-        onChange={e => setSearch(e.target.value)}
+        onChange={e => {
+          setSearch(e.target.value);
+          navigate("/products");
+        }}
       />
       <select className="py-2 px-1 focus:outline-none bg-white-color border-l-2 border-primary-color min-w-0 flex-shrink-0">
         <option>Categoria</option>

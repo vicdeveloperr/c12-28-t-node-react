@@ -7,7 +7,7 @@ import { Carousel, Rating } from "flowbite-react";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Detail({ idProduct }: { idProduct: number }) {
+function Detail() {
   return (
       <>
           <Header />
