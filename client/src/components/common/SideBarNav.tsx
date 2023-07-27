@@ -2,6 +2,7 @@ import fotoUser from "../../assets/foto-de-perfil.png"
 import { faClockRotateLeft, faHouse, faArrowRightFromBracket, faCartShopping, faUser, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function SideBarNav() {
     const sideBarNavRef = useRef<HTMLElement>(null);
@@ -14,7 +15,7 @@ function SideBarNav() {
       }, []);
 
     return (
-        <aside ref={sideBarNavRef} id="SideBarNav" className="bg-primary-color-light max-w-1/3 fixed p-3 top-0 flex flex-col justify-between h-screen items-center">
+        <aside ref={sideBarNavRef} id="SideBarNav" className="bg-primary-color-light max-w-1/3 fixed p-3 top-0 flex-col justify-between h-screen items-center hidden">
             <div className="flex">
                 <img className="rounded max-w-[100px] max-h-[100px] overflow-hidden" src={fotoUser}></img>
                 <div className="text-h3 ml-3 h-full flex-col justify-center hidden md:flex">
@@ -25,35 +26,28 @@ function SideBarNav() {
             <nav className="flex flex-col text-nav-items">
                 <NavItem 
                     marginTop={false}
-                    targetUrl="#" 
+                    targetUrl="/profile" 
                     iconComponent={
                         <FontAwesomeIcon className="text-primary-color" icon={faUser} />
                     }
                     linkName="Perfil" 
                 />
                 <NavItem 
-                    targetUrl="#" 
-                    iconComponent={
-                        <FontAwesomeIcon className="text-primary-color" icon={faClockRotateLeft} />
-                    }
-                    linkName="Historial" 
-                />
-                <NavItem 
-                    targetUrl="#"
+                    targetUrl="/cart"
                     iconComponent={
                         <FontAwesomeIcon className="text-primary-color" icon={faCartShopping} />
                     }
                     linkName="Carrito"
                 />
                 <NavItem 
-                    targetUrl="#"
+                    targetUrl="/favorites"
                     iconComponent={
                         <FontAwesomeIcon className="text-primary-color" icon={faHeart} />
                     }
                     linkName="Favoritos"
                 />
                 <NavItem 
-                    targetUrl="#"
+                    targetUrl="/home"
                     iconComponent={
                         <FontAwesomeIcon className="text-primary-color" icon={faHouse} />
                     }
@@ -69,10 +63,10 @@ function SideBarNav() {
 
     function NavItem({ targetUrl, linkName, iconComponent, marginTop=true }: { targetUrl: string, linkName: string, iconComponent: JSX.Element, marginTop?: boolean }) {
         return (
-            <a className={ marginTop ? "mt-5 font-light" : "font-light"} href={targetUrl}>
+            <Link to={targetUrl} className={ marginTop ? "mt-5 font-light" : "font-light"}>
                 {iconComponent}
                 <span className="ml-3 hidden md:inline-block">{linkName}</span>
-            </a>
+            </Link>
         );
     }
 }

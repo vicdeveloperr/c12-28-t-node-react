@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import HomePage from "../Views/HomePage";
-import Register from "../Views/Register";
-import Login from "../Views/Login";
-import Landing from "../Views/Landing";
-import Detail from "../Views/Detail";
-import Products from "../Views/Products";
-import Perfil from "../Views/Perfil";
-import EditProduct from "../Views/EditProduct";
-import Cart from "../Views/Cart";
+import HomePage from "../views/HomePage";
+import Register from "../views/Register";
+import Login from "../views/Login";
+import Landing from "../views/Landing";
+import Detail from "../views/Detail";
+import Products from "../views/Products";
+import Profile from "../views/Profile";
+import EditProduct from "../views/EditProduct";
+import Cart from "../views/Cart";
+import Favorites from "../views/Favorites";
 
 function Router() {
   return (
@@ -20,10 +21,10 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products />} />
         <Route path="/detail" element={<Detail />} />
-        <Route path="/perfil" element={<Perfil />} />
-        {/* Cambiar perfil a profile */}
+        <Route path="/profile" element={<Profile />} />
         <Route path="/productform" element={<EditProduct />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </BrowserRouter>
   );
