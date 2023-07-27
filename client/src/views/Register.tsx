@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import NavBar from "../components/common/NavBar";
 import Footer from "../components/common/Footer";
 import TopBar from "../components/common/TopBar";
 
@@ -150,7 +149,6 @@ export default function Register() {
                 >
                   Aceptar
                 </button>
-                f
               </div>
             </form>
           </div>

@@ -2,33 +2,7 @@ import { create } from "zustand"
 import { persist } from 'zustand/middleware'
 
 import { SERVER_URL } from "../utils/constants";
-
-interface Product {
-  idProduct: number;
-  name: string;
-  description: string;
-  stock: number;
-  price: number;
-  category: {
-    name: string;
-  }
-  topic_1: string;
-  detail_1: string;
-  topic_2?: string,
-  detail_2?: string,
-  topic_3?: string,
-  detail_3?: string,
-  topic_4?: string;
-  detail_4?: string;
-  topic_5?: string;
-  detail_5?: string;
-  topic_6?: string;
-  detail_6?: string;
-  topic_7?: string;
-  detail_7?: string;
-  topic_8?: string;
-  detail_8?: string;
-}
+import { Product } from "../types/ProductType";
 
 interface ProductStore {
   product: Product;
@@ -37,13 +11,13 @@ interface ProductStore {
   search: string;
   setProducts: (products: Product) => void
   setSearch: (search: string) => void;
+  createProduct: (product: Product) => void;
 }
 
 const searchAndSortProducts = (products: Product[], search: string) =>
   products
     .filter(product => product.category.name.includes(search.toLowerCase()))
     .sort((a, b) => a.category.name.localeCompare(b.category.name))
-
 
 export const useProductStore = create(persist<ProductStore>((set, get) => ({
   product: {
@@ -69,6 +43,9 @@ export const useProductStore = create(persist<ProductStore>((set, get) => ({
   },
   setSearch: (search) => {
     set({ search, products: searchAndSortProducts(get().products, search) })
+  },
+  createProduct: (product) => {
+    set({ products: [...get().products, { ...product }] })
   }
 }), {
   name: "products-storage",
