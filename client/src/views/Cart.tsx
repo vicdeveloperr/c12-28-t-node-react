@@ -1,6 +1,6 @@
 import Header from "../components/layouts/Header";
 import Footer from "../components/common/Footer";
-import CartCard from "../components/common/CartCard";
+//import CartCard from "../components/common/CartCard";
 
 
 
@@ -12,8 +12,8 @@ function Cart() {
                 <h1 className="text-h3 text-secondary-color font-extrabold mb-4">Carrito</h1>
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
               <div className="w-1/2 h-auto p-4 flex flex-col space-y-4">
-                <CartCard></CartCard>
-                <CartCard></CartCard>
+                {/*<CartCard></CartCard>*/}
+                {/*<CartCard></CartCard>*/}
               </div>
               
               <div className="p-4 w-full md:w-1/2">

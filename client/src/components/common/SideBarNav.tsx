@@ -1,11 +1,13 @@
 import fotoUser from "../../assets/foto-de-perfil.png"
-import { faClockRotateLeft, faHouse, faArrowRightFromBracket, faCartShopping, faUser, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faArrowRightFromBracket, faCartShopping, faUser, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useUserStore } from "../../stateManagemet/useUserStore";
 
 function SideBarNav() {
     const sideBarNavRef = useRef<HTMLElement>(null);
+    const { userData } = useUserStore(state => state);
 
     useEffect(() => {
         if (sideBarNavRef.current) {
@@ -15,12 +17,12 @@ function SideBarNav() {
       }, []);
 
     return (
-        <aside ref={sideBarNavRef} id="SideBarNav" className="bg-primary-color-light max-w-1/3 fixed p-3 top-0 flex-col justify-between h-screen items-center hidden">
+        <aside ref={sideBarNavRef} id="SideBarNav" className="bg-primary-color-light max-w-1/3 fixed px-7 py-5 top-0 flex-col justify-between h-screen items-center hidden">
             <div className="flex">
                 <img className="rounded max-w-[100px] max-h-[100px] overflow-hidden" src={fotoUser}></img>
                 <div className="text-h3 ml-3 h-full flex-col justify-center hidden md:flex">
-                    <h4 className="font-bold">Ernesto Cabañas</h4>
-                    <h6>ernestocabañas@gmail.com</h6>
+                    <h4 className="font-bold">{`${userData.firstName} ${userData.lastName}`}</h4>
+                    <h6>{userData.email}</h6>
                 </div>
             </div>
             <nav className="flex flex-col text-nav-items">
