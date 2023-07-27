@@ -1,51 +1,59 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db');
-const Rol = require('../models/Rol');
+const Role = require('./Role');
 const Photo = require('../models/Photo');
 
 const User = db.define('user', {
-    idUser: {
+	idUser: {
+        type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
+        primaryKey: true
+	},
+	user: {
+        type: DataTypes.STRING,
+        allowNull: false
+	},
+	email: {
+        type: DataTypes.STRING,
+        allowNull: false
+	},
+	password: {
+        type: DataTypes.STRING,
+        allowNull: false
+	},
+	firstName: {
+        type: DataTypes.STRING,
+        allowNull: false
+	},
+	lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
+	},
+	phone: {
+        type: DataTypes.STRING,
+        allowNull: true
+	},
+	idUserAddress: {
         type: DataTypes.INTEGER,
-    },
-    user: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    firstName: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    lastName: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    phone: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    idUserAddress: {
+        allowNull: true
+	},
+    idRol: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
+    },
+    idPhoto: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 },
-    {
-        timestamps: false,
-    },
-
+	{
+		initialAutoIncrement: 1,
+  	    timestamps: false
+	},
 );
 
-User.belongsTo(Rol, {
+User.belongsTo(Role, {
     foreignKey: 'idRol',
 });
 

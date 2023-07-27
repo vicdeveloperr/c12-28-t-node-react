@@ -28,10 +28,12 @@ export default {
       "btn-text": "16px",
       "nav-items": "30px",
       "lista": "20px",
+      "parrafo": "16px",
       "h1": "64px",
       "h2": "44px",
       "h3": "24px",
-      "h4": "20px"
+      "h4": "20px",
+      "h5": "18px"
     }
   },
   plugins: [

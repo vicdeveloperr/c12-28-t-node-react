@@ -1,64 +1,32 @@
-import { create } from "zustand"
+import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
-type elementsInTopBarElement = "sideBarNavToglerElement" | "logoElement" | "searchBarElement" | "searchBarToglerElement";
-type topBarStore = {
-    sideBarNavToglerElement: boolean,
-    logoElement: boolean,
-    searchBarToglerElement: boolean,
-    searchBarElement: boolean,
-    hiddenElements: (elements: Array<elementsInTopBarElement>) => void,
-    showElements: (elements: Array<elementsInTopBarElement>) => void
+interface User {
+  name: string;
+  lastName: string;
+  email: string;
 }
-export const useTopBarStore = create<topBarStore>()((set) => ({
-    sideBarNavToglerElement: true,
-    searchBarToglerElement: true,
-    logoElement: true,
-    searchBarElement: true,
-    hiddenElements: (elements) => set(() => {
-        let elementsVisible = {
-            sideBarNavToglerElement: true,
-            logoElement: true,
-            searchBarElement: true,
-            searchBarToglerElement: true
-        }
 
-        elements.map((element) => {
-            if(element in elementsVisible){
-                elementsVisible[element] = false;
-            }
-        })
-
-        return elementsVisible
-    }),
-    showElements: (elementsToHide) => set(() => {
-            let elements = {
-                sideBarNavToglerElement: true,
-                logoElement: true,
-                searchBarElement: true,
-                searchBarToglerElement: true
-            }
-    
-            elementsToHide.map((element) => {
-                if(element in elements){
-                    elements[element] = false;
-                }
-            })
-    
-            return elements
-    })
-}));
-
-type perfilViewStore = {
-    editMode: boolean,
-    changeMode: (mode: "edit" | "noEdit") => void
+interface UserStore {
+  user: User;
+  addUser: (obj: User) => void;
 }
-export const usePerfilViewStore = create<perfilViewStore>()((set) => ({
-    editMode: false,
-    changeMode: (mode) => set(() => {
-        if(mode === "edit") {
-            return ({editMode: true})
-        }else {
-            return ({editMode: false})
-        }
-    })
-}))
+
+export const userStore = create(persist<UserStore>(
+  (set, get) => ({
+    user: {
+      name: "",
+      lastName: "",
+      email: ""
+    },
+
+    addUser: (loggedUser: User) => {
+      set({ user: { ...get().user, ...loggedUser } })
+    },
+    // crear funcion para editar los datos del usuario
+  }),
+  {
+    name: 'user-storage',
+    storage: createJSONStorage(() => localStorage)
+  }
+))
