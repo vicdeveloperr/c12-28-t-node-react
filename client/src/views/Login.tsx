@@ -64,7 +64,7 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col justify-center item-center gap-2">
               <label>
-                <h3 className="">Usuario</h3>
+                <h3 className="">Email</h3>
                 <input
                   autoFocus
                   required
