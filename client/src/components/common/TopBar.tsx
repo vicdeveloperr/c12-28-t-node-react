@@ -111,6 +111,7 @@ function TopBar() {
       document.querySelector("#SideBarNav");
     if (sideBarNavElement) {
       sideBarNavElement.style.right = "0px";
+      sideBarNavElement.style.display = 'flex';
     }
   }
 

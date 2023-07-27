@@ -6,9 +6,10 @@ import Login from "../views/Login";
 import Landing from "../views/Landing";
 import Detail from "../views/Detail";
 import Products from "../views/Products";
-import Perfil from "../views/Perfil";
+import Profile from "../views/Profile";
 import EditProduct from "../views/EditProduct";
 import Cart from "../views/Cart";
+import Favorites from "../views/Favorites";
 
 function Router() {
   return (
@@ -20,10 +21,10 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Products />} />
         <Route path="/detail" element={<Detail />} />
-        <Route path="/perfil" element={<Perfil />} />
-        {/* Cambiar perfil a profile */}
+        <Route path="/profile" element={<Profile />} />
         <Route path="/productform" element={<EditProduct />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </BrowserRouter>
   );
