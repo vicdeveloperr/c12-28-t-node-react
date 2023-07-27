@@ -1,11 +1,10 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import NavBar from "../components/common/NavBar";
 import Footer from "../components/common/Footer";
 import TopBar from "../components/common/TopBar";
 
 export default function Register() {
-
   interface UserFormState {
     user: string;
     email: string;
@@ -14,38 +13,43 @@ export default function Register() {
     lastName: string;
   }
 
+  const navigate = useNavigate();
+
   const [userForm, setUserForm] = useState<UserFormState>({
-    user: '',
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: ''
+    user: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    password: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>
+  ) => {
     setUserForm({ ...userForm, [e.target.name]: e.target.value });
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/auth/signup', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3001/auth/signup", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userForm)
-      })
-      alert('Usuario dado de alta con exito');
+        body: JSON.stringify(userForm),
+      });
+      alert("Usuario dado de alta con exito");
       if (response.status === 200) {
+        alert("Usuario dado de alta con exito");
         const data = await response.json();
+        navigate("/login");
         console.log(data);
       } else {
-        console.log('Error al dar de alta usuario');
+        console.log("Error al dar de alta usuario");
       }
-
     } catch (error) {
-      console.error('Error al realizar la petición', error);
+      console.error("Error al realizar la petición", error);
     }
-  }
+  };
 
   return (
     <>
@@ -80,7 +84,9 @@ export default function Register() {
                   <input
                     name="email"
                     value={userForm.email}
-                    type="text"
+                    type="email"
+                    minLength={5}
+                    maxLength={30}
                     required
                     className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                     onChange={handleChange}
@@ -92,6 +98,7 @@ export default function Register() {
                     name="firstName"
                     value={userForm.firstName}
                     type="text"
+                    maxLength={30}
                     required
                     className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                     onChange={handleChange}
@@ -103,6 +110,7 @@ export default function Register() {
                     name="lastName"
                     value={userForm.lastName}
                     type="text"
+                    maxLength={30}
                     required
                     className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                     onChange={handleChange}
@@ -113,9 +121,12 @@ export default function Register() {
                   <input
                     name="password"
                     value={userForm.password}
-                    type="text"
+                    type="password"
                     placeholder="Debe tener al menos 6 caracteres"
                     required
+                    minLength={8}
+                    maxLength={32}
+                    autoComplete="on"
                     className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                     onChange={handleChange}
                   />
@@ -123,7 +134,7 @@ export default function Register() {
                 <label>
                   <h3>Vuelve a escribir la contraseña</h3>
                   <input
-                    type="text"
+                    type="password"
                     required
                     className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                   />
@@ -132,16 +143,17 @@ export default function Register() {
                   Al crear una cuenta, aceptas las Condiciones de Uso y el Aviso
                   de Privacidad de Lorem Ipsum.
                 </small>
-                <button type="submit" className="bg-tertiary-color rounded-full p-2 text-lg text-white">
+                <button
+                  type="submit"
+                  className="bg-tertiary-color rounded-full p-2 text-lg text-white"
+                >
                   Aceptar
                 </button>
-                f</div>
+              </div>
             </form>
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

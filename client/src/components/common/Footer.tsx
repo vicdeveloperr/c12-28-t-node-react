@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="bg-secondary-color p-16 flex flex-col gap-6">
-      <div id="first-col" className="flex gap-4 justify-between">
+      <div id="first-col" className="flex gap-4 justify-between flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
         <div className="flex flex-col gap-2 w-[29ch]">
           <h3 className="text-lg text-white font-bold">Estemos en contacto</h3>
           <p className="text-[#ddd] font-light">

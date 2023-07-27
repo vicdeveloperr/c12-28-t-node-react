@@ -22,8 +22,8 @@ const getUsers = async (req, res) => {
     });
     res.status(200).json(users);
   } catch (error) {
-      console.log(error);
-    }
+    console.log(error);
+  }
 };
 
 const getUser = async (req, res) => {
@@ -53,8 +53,7 @@ const getUser = async (req, res) => {
 };
 
 const getUserByEmail = async (req, res) => {
-
-  const {email} = req.query;
+  const { email } = req.params;
 
   try {
     const userfound = await User.findOne({
@@ -68,13 +67,13 @@ const getUserByEmail = async (req, res) => {
           model: Role, attributes: {exclude: ['idRol']}
         }
       ],
-      attributes: {exclude: ['idRol']}
+      attributes: { exclude: ['idRol'] }
     }
     );
     res.status(200).json(userfound);
   } catch (error) {
-      console.log(error);
-    }
+    console.log(error);
+  }
 };
 
 const updateUser = async (req, res) => {

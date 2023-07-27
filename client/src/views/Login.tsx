@@ -1,51 +1,53 @@
-import { useState } from 'react'
+import { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
 
 import Footer from "../components/common/Footer";
 import TopBar from "../components/common/TopBar";
-import ButtonLogIn from "../components/common/ButtonLogIn";
+import { useUserStore } from "../stateManagemet/useUserStore";
 
 const Login = () => {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+  const addUser = useUserStore(state => state.addUser);
   const navigate = useNavigate();
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
-    setEmail(e.target.value)
-  }
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>) => {
-    setPassword(e.target.value)
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>
+  ) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // try {
-    const response = await axios.post('http://localhost:3001/auth/signin', {
-      email, password
-    })
+
+    const response = await fetch("http://localhost:3001/auth/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
+
+    const data = await response.json();
     console.log(response);
-    if (response.statusText === 'OK') {
-      const { token } = response.data;
+    if (response.statusText === "OK") {
+      const { token, user } = data;
       console.log(token);
-      localStorage.setItem('token', token);
-      localStorage.setItem('email', email);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      addUser(user);
+      localStorage.setItem("token", token);
+      localStorage.setItem("userSession", user);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-      navigate('/home')
-
+      navigate("/home");
     } else {
-      alert('Datos de inicio de sesion incorrectos!')
-      console.log('Error al iniciar la sesión');
+      // controlar cuando el email/contraseña son incorrectos
+      // y mostrarlo al usuario
+      alert("Datos de inicio de sesion incorrectos!");
+      console.log("Error al iniciar la sesión");
     }
-
-    // } catch (error) {
-    //   console.log('Error al realizar la petición');
-    // }
-  }
+  };
 
   return (
     <>
@@ -62,13 +64,15 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col justify-center item-center gap-2">
               <label>
-                <h3 className="">Usuario</h3>
+                <h3 className="">Email</h3>
                 <input
                   autoFocus
                   required
                   name="email"
                   type="email"
-                  onChange={handleEmailChange}
+                  minLength={5}
+                  maxLength={30}
+                  onChange={handleChange}
                   className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                 />
               </label>
@@ -77,15 +81,21 @@ const Login = () => {
                 <input
                   name="password"
                   required
-                  type="text"
-                  onChange={handlePasswordChange}
+                  type="password"
+                  minLength={8}
+                  maxLength={32}
+                  autoComplete="on"
+                  onChange={handleChange}
                   className="py-1 px-2 rounded-lg border-gray border-[1px] focus:outline-none"
                 />
               </label>
-              <button type="submit" className="bg-tertiary-color rounded-full p-2 text-lg text-white">
+              <button
+                type="submit"
+                className="bg-tertiary-color rounded-full p-2 text-lg text-white"
+              >
                 Aceptar
               </button>
-              fo</div>
+            </div>
           </form>
           <div className="flex gap-2 items-center">
             <p>No tienes cuenta?</p>
@@ -96,7 +106,6 @@ const Login = () => {
           <p>Olvidaste tu contraseña?</p>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
