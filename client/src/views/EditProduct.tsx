@@ -27,7 +27,7 @@ function Detail() {
   });
   const categories = useCategoriesStore(state => state.categories);
 
-  const setDefault = () =>
+  const setDefault = () => {
     setProduct({
       name: "",
       description: "",
@@ -40,26 +40,27 @@ function Detail() {
       detail_1: "",
       photos: [{ name: "" }],
     });
+    setIsSelected(false);
+  };
 
   const handleUploadImage = file => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append(
       "cloud_name",
-      import.meta.env.REACT_APP_CLOUDINARY_CLOUD_NAME
+      import.meta.env.VITE_REACT_APP_CLOUDINARY_CLOUD_NAME
     );
     formData.append(
       "upload_preset",
-      import.meta.env.REACT_APP_CLOUDINARY_PRESET_NAME
+      import.meta.env.VITE_REACT_APP_CLOUDINARY_PRESET_NAME
     );
 
-    fetch(import.meta.env.REACT_APP_CLOUDINARY_API_BASE_URL, {
+    fetch(import.meta.env.VITE_REACT_APP_CLOUDINARY_API_BASE_URL, {
       method: "POST",
       body: formData,
     })
       .then(res => res.json())
       .then(data => {
-        console.log("Funcionó: ", data);
         if (data.secure_url !== "") {
           const uploadedFileUrl = data.secure_url;
           setProduct({
@@ -70,6 +71,8 @@ function Detail() {
               },
             ],
           });
+          alert("Imagen cargada");
+          setIsSelected(false);
         } else {
           console.error("Public img not available");
         }
@@ -80,11 +83,14 @@ function Detail() {
   const handleOnSubmit = e => {
     e.preventDefault();
 
-    const [{ idCategory }] = categories.find(
+    const productCategory = categories.find(
       c => product.category.name === c.name
     );
-    const userSession = localStorage.getItem("userSession");
-    const userProduct = { ...product, userSession, idCategory };
+    const idCategoryProduct = productCategory?.idCategory;
+    const userSession = localStorage.getItem("user-storage");
+    const userParsed = JSON.parse(userSession);
+    const idUserProduct = userParsed.state.user.idUser;
+    const userProduct = { ...product, idUserProduct, idCategoryProduct };
     console.log(userProduct);
     try {
       fetch(`${SERVER_URL}/products`, {
@@ -163,7 +169,6 @@ function Detail() {
           <form
             className="w-1/2 p-4 bg-light-blue-color rounded-lg"
             onSubmit={handleOnSubmit}
-            method="POST"
           >
             <label htmlFor="product-name">
               <h2 className="text-h4 text-secondary-color font-extrabold">
@@ -242,18 +247,68 @@ function Detail() {
               <div className="flex gap-3">
                 <label>
                   <h3>Tópico 1</h3>
-                  <Input color="secondary-color" inputId="" inputName="" />
+                  <Input
+                    color="secondary-color"
+                    inputId="product-topic-1"
+                    inputName="product-topic-1"
+                    value={product.topic_1}
+                    handler={e =>
+                      setProduct({
+                        ...product,
+                        topic_1: e.target.value,
+                      })
+                    }
+                  />
                 </label>
                 <label>
                   <h3>Detalle 1</h3>
-                  <Input color="secondary-color" inputId="" inputName="" />
+                  <Input
+                    color="secondary-color"
+                    inputId="product-detail-1"
+                    inputName="product-detail-1"
+                    value={product.detail_1}
+                    handler={e =>
+                      setProduct({
+                        ...product,
+                        detail_1: e.target.value,
+                      })
+                    }
+                  />
                 </label>
               </div>
 
               <h4 className="text-h5 font-extrabold mt-2">Tipo 2</h4>
               <div className="flex gap-3">
-                <Input color="secondary-color" inputId="" inputName="" />
-                <Input color="secondary-color" inputId="" inputName="" />
+                <label>
+                  <h3>Tópico 2</h3>
+                  <Input
+                    color="secondary-color"
+                    inputId="product-topic-2"
+                    inputName="product-topic-2"
+                    value={product.topic_2}
+                    handler={e =>
+                      setProduct({
+                        ...product,
+                        topic_2: e.target.value,
+                      })
+                    }
+                  />
+                </label>
+                <label>
+                  <h3>Detalle 2</h3>
+                  <Input
+                    color="secondary-color"
+                    inputId="product-detail-2"
+                    inputName="product-detail-2"
+                    value={product.detail_2}
+                    handler={e =>
+                      setProduct({
+                        ...product,
+                        detail_2: e.target.value,
+                      })
+                    }
+                  />
+                </label>
               </div>
             </label>
             <label htmlFor="product-stock">
@@ -264,6 +319,13 @@ function Detail() {
                 color="secondary-color"
                 inputId="product-stock"
                 inputName="product-stock"
+                value={product.stock}
+                handler={e =>
+                  setProduct({
+                    ...product,
+                    stock: e.target.value,
+                  })
+                }
               />
             </label>
             <button
