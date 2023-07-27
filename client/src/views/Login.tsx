@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Footer from "../components/common/Footer";
 import TopBar from "../components/common/TopBar";
-import { userStore } from "../stateManagemet/stores";
+import { useUserStore } from "../stateManagemet/useUserStore";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -12,7 +12,7 @@ const Login = () => {
     password: "",
   });
 
-  const addUser = userStore(state => state.addUser);
+  const addUser = useUserStore(state => state.addUser);
   const navigate = useNavigate();
 
   const handleChange = (
