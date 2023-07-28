@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TopBar from "../components/common/TopBar";
 import SideBarNav from "../components/common/SideBarNav";
 
-
 function Detail() {
   const { id } = useParams();
   const products = useProductStore(state => state.products);
