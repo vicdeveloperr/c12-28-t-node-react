@@ -14,7 +14,7 @@ interface ProductStore {
   createProduct: (product: Product) => void;
 }
 
-const searchAndSortProducts = (products: Product[], search: string) =>{
+const searchAndSortProducts = (products: Product[], search: string) =>
   products
     .filter(product => product.category.name.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => a.category.name.localeCompare(b.category.name))
