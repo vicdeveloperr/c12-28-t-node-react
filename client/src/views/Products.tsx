@@ -2,8 +2,12 @@ import TopBar from "../components/common/TopBar";
 import SideBarNav from "../components/common/SideBarNav";
 import Footer from "../components/common/Footer";
 import ProductCard from "../components/common/ProductCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 import { useProductStore } from "../stateManagemet/useProductStore";
+import Button from "../components/common/Button";
 
 export default function Products() {
   const products = useProductStore(state => state.searchProducts);
@@ -13,10 +17,15 @@ export default function Products() {
       <TopBar />
       <SideBarNav />
       <div className="mt-16  px-16">
-        <div>
-          <h1 className="text-h3 text-secondary-color font-extrabold mb-4">
+        <div className="flex justify-between mb-4">
+          <h1 className="text-h3 text-secondary-color font-extrabold">
             Productos
           </h1>
+          <Button color="primary-color">
+            <Link to="/productform">
+              <FontAwesomeIcon icon={faPlus} />
+            </Link>
+          </Button>
         </div>
         <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {products.length !== 0 ? (
