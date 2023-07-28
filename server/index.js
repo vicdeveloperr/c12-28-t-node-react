@@ -1,6 +1,7 @@
 const server = require('./src/server');
 const db = require('./src/config/db');
 const preloadData = require('./src/libs/preloadData');
+require('dotenv').config();
 
 // Conectar la base de datos
 db.authenticate()
@@ -11,7 +12,7 @@ db.authenticate()
     console.log(error);
   })
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Sincronizar modelos y arrancar servidor
 db.sync({ force: false }).then(() => {
