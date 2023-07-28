@@ -58,13 +58,6 @@ function SideBarNav() {
           linkName="Carrito"
         />
         <NavItem
-          targetUrl="/favorites"
-          iconComponent={
-            <FontAwesomeIcon className="text-primary-color" icon={faHeart} />
-          }
-          linkName="Favoritos"
-        />
-        <NavItem
           targetUrl="/products"
           iconComponent={
             <FontAwesomeIcon icon={faStore} className="text-primary-color" />
