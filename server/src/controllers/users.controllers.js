@@ -54,7 +54,6 @@ const getUser = async (req, res) => {
 
 const getUserByEmail = async (req, res) => {
   const { email } = req.query;
-  console.log(email)
 
   try {
     const userfound = await User.findOne({

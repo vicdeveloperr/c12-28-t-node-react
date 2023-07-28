@@ -3,6 +3,7 @@ import Footer from "../components/common/Footer";
 import ProductCard from "../components/common/ProductCard";
 
 import { useProductStore } from "../stateManagemet/useProductStore";
+import SideBarNav from "../components/common/SideBarNav";
 
 export default function Products() {
   const products = useProductStore(state => state.searchProducts);
@@ -10,6 +11,7 @@ export default function Products() {
   return (
     <>
       <Header />
+      <SideBarNav />
       <div className="mt-16  px-16">
         <div>
           <h1 className="text-h3r text-secondary-color font-extrabold mb-4">
