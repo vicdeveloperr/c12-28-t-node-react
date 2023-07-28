@@ -6,7 +6,7 @@ import ProductCard from "../components/common/ProductCard";
 import { useProductStore } from "../stateManagemet/useProductStore";
 
 export default function Products() {
-  const products = useProductStore(state => state.products);
+  const products = useProductStore(state => state.searchProducts);
   console.log(products);
   return (
     <>
@@ -19,7 +19,7 @@ export default function Products() {
           </h1>
         </div>
         <div className="grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {products ? (
+          {products.length !== 0 ? (
             products.map(product => (
               <ProductCard
                 key={product.idProduct}
@@ -34,7 +34,14 @@ export default function Products() {
           ))
           ) : (
             <div>
-              <h2>No se encontró ningún producto</h2>
+              <div className="flex flex-col gap-2 w-[50ch] py-20">
+                <h2 className="text-lg text-gray-800">
+                  No se encontró ningún producto
+                </h2>
+                <p className="text-md text-gray-500">
+                  Busca otros productos que están disponibles
+                </p>
+              </div>
             </div>
           )}
         </div>

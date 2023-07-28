@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function SearchBar() {
   const categories = useCategoriesStore(state => state.categories);
+  const search = useProductStore(state => state.search);
   const setSearch = useProductStore(state => state.setSearch);
   const navigate = useNavigate();
 
@@ -20,12 +21,18 @@ function SearchBar() {
         type="text"
         name="producto"
         id="producto"
+        value={search}
         onChange={e => {
           setSearch(e.target.value);
           navigate("/products");
         }}
       />
-      <select className="py-2 px-1 focus:outline-none bg-white-color border-l-2 border-primary-color min-w-0 flex-shrink-0">
+      <select
+        className="py-2 px-1 focus:outline-none bg-white-color border-l-2 border-primary-color min-w-0 flex-shrink-0"
+        onClick={e => {
+          console.log(e);
+        }}
+      >
         <option>Categoria</option>
         {categories?.map(category => (
           <option key={category.idCategory} value={category.name}>

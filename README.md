@@ -24,7 +24,9 @@ Este es una aplicación fullstack de un e-commerce multi-cliente donde tantos ve
 ## Características
 
 - Login
-- Creación de Cuenta
+- Creación de cuenta de un usuario
+- Crear un nuevo producto
+- Filtrar productos por categoría
 
 ## Roles
 

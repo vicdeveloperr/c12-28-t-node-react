@@ -1,32 +1,31 @@
 import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware'
+import loadUserData from '../utils/loadUserData';
 
-interface User {
-  name: string;
-  lastName: string;
+interface User {  
+  user: string;
   email: string;
+  firstName: string;
+  lastName: string;
+  phone: number;
+  role: string;
 }
 
 interface UserStore {
-  user: User;
-  addUser: (obj: User) => void;
+  userData: User;
 }
 
-export const useUserStore = create(persist<UserStore>(
-  (set, get) => ({
-    user: {
-      name: "",
-      lastName: "",
-      email: ""
-    },
-
-    addUser: (loggedUser: User) => {
-      set({ user: { ...get().user, ...loggedUser } })
-    },
-    // crear funcion para editar los datos del usuario
-  }),
-  {
-    name: 'user-storage',
-    storage: createJSONStorage(() => localStorage)
+export const useUserStore = create<UserStore>()(() => {
+  loadUserData();
+  const loadUserDataStorage = JSON.parse(localStorage.userData  as string);
+  
+  return ({
+    userData: {
+      user: loadUserDataStorage.user,
+      email: loadUserDataStorage.email,
+      firstName: loadUserDataStorage.firstName,
+      lastName: loadUserDataStorage.lastName,
+      phone: loadUserDataStorage.phone,
+      role: loadUserDataStorage.role.name
+    }
   }
-))
+)});

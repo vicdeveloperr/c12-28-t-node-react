@@ -6,7 +6,12 @@ const Category = require('../models/Category');
 const Product = require('../models/Product');
 const Payment_method = require('../models/Payment_method');
 
+const bcrypt = require('bcryptjs');
+
 const preloadData = async () => {
+
+  let salt = await bcrypt.genSalt(10);
+
     /*** Precarga modelo Fotos ***/
   const photos = await Photo.findAll();
   if (!photos.length) {
@@ -24,6 +29,15 @@ const preloadData = async () => {
     });
     await Photo.create({
       name: 'https://i.pinimg.com/564x/e1/70/9b/e1709bc86114102d04cf73089946ceda.jpg'
+    });
+    await Photo.create({
+      name: 'https://images.start.com.ar/SM-S918BZKMARO-4.jpg'
+    });
+    await Photo.create({
+      name: 'https://images.samsung.com/es/smartphones/galaxy-s23-ultra/buy/02_Image_Carousel/02-5_Offer_KV_General_Trade-in/S23Ultra_offerkv_tradein_PC.jpg'
+    });
+    await Photo.create({
+      name: 'https://images.samsung.com/es/smartphones/galaxy-s23-ultra/buy/02_Image_Carousel/02-3_Group_KV_Exclusive_Color/S23Ultra_groupkv_exclusive_PC.jpg'
     });
   }
   
@@ -57,6 +71,68 @@ const preloadData = async () => {
       name: "Guest",
     });
   }
+
+  /*** Precarga modelo Direcciones ***/
+  const addresses = await Address.findAll();
+  if (!addresses.length) {
+    await Address.bulkCreate([
+      {
+        country: 'Argentina',
+        province: 'Tucumán',
+        city: 'San Miguel de Tucumán',
+        street:'Calle 1',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '4000',
+        // idUserAddress: 1
+      },
+      {
+        country: 'Argentina',
+        province: 'Misiones',
+        city: 'Posadas',
+        street:'Calle 2',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '3300',
+        // idUserAddress: 2
+      },
+      {
+        country: 'Argentina',
+        province: 'Buenos Aires',
+        city: 'Buenos Aires',
+        street:'Calle 3',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '1228',
+        // idUserAddress: 3
+      },
+      {
+        country: 'Paraguay',
+        province: 'Alta Parana',
+        city: 'Ciudad del Este',
+        street:'Calle 4',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '7000',
+        // idUserAddress: 4
+      },
+      {
+        country: 'Argentina',
+        province: 'Misiones',
+        city: 'Posadas',
+        street:'Calle 5',
+        number: 1234,
+        flat: '',
+        district: '',
+        cp: '3300',
+        // idUserAddress: 5
+      },
+    ])
+  }
  
   /*** Precarga modelo Categorias ***/
   const category = await Category.findAll();
@@ -89,7 +165,6 @@ const preloadData = async () => {
       }
     ])
   }
-   
 
   /*** Precarga modelo Usuarios ***/
   const users = await User.findAll();
@@ -98,7 +173,7 @@ const preloadData = async () => {
       {
         user: 'Ernest21',
         email: 'ernesto@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Ernesto',
         lastName: 'Villagra',
         phone: '123456',
@@ -109,7 +184,7 @@ const preloadData = async () => {
       {
         user: 'fabio',
         email: 'fabio@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Fabio',
         lastName: 'Cicerelli',
         phone: '123456',
@@ -120,29 +195,29 @@ const preloadData = async () => {
       {
         user: 'victor',
         email: 'victor@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Victor',
         lastName: 'Ayala',
         phone: '123456',
         idRol: 1,
         idPhoto: 3,
-        idUserAddress: 3
+        idUserAddress: 4
       },
       {
         user: 'alondra',
         email: 'alondra@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Alondra',
         lastName: 'Cena',
         phone: '123456',
         idRol: 2,
         idPhoto: 4,
-        idUserAddress: 4
+        idUserAddress: 3
       },
       {
         user: 'elias',
         email: 'elias@mail.com',
-        password: '123456',
+        password: await bcrypt.hash('123456', salt),
         firstName:'Elias',
         lastName: 'Pereyra',
         phone: '123456',
@@ -151,68 +226,6 @@ const preloadData = async () => {
         idUserAddress: 5
       }
   ])
-  }
-
-  /*** Precarga modelo Direcciones ***/
-  const addresses = await Address.findAll();
-  if (!addresses.length) {
-    await Address.bulkCreate([
-      {
-        country: 'Argentina',
-        province: 'Tucumán',
-        city: 'San Miguel de Tucumán',
-        street:'Calle 1',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '4000',
-        idUserAddress: 1
-      },
-      {
-        country: 'Argentina',
-        province: 'Misiones',
-        city: 'Posadas',
-        street:'Calle 2',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '3300',
-        idUserAddress: 2
-      },
-      {
-        country: 'Argentina',
-        province: 'Buenos Aires',
-        city: 'Buenos Aires',
-        street:'Calle 3',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '1228',
-        idUserAddress: 3
-      },
-      {
-        country: 'Paraguay',
-        province: 'Alta Parana',
-        city: 'Ciudad del Este',
-        street:'Calle 4',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '7000',
-        idUserAddress: 4
-      },
-      {
-        country: 'Argentina',
-        province: 'Misiones',
-        city: 'Posadas',
-        street:'Calle 5',
-        number: 1234,
-        flat: '',
-        district: '',
-        cp: '3300',
-        idUserAddress: 5
-      },
-    ])
   }
 
   /*** Precarga modelo Productos ***/
@@ -229,10 +242,16 @@ const preloadData = async () => {
         idCategoryProduct: 4,
         idUserProduct: 2,
         photos: [
-        {
-          name: "lkjkldfjkldjfldkjf"    
-        }
-      ]
+          {
+            name: 'https://ruta.com/S23-1.jpg'
+          },
+          {
+            name: 'https://ruta.com/S23-2.jpg'
+          },
+          {
+            name: 'https://ruta.com/S23-3.jpg'
+          }
+        ]
       },
       {
         name: 'Monitor LG 23" ',

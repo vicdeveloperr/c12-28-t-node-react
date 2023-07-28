@@ -1,13 +1,16 @@
 export default function Footer() {
   return (
     <footer className="bg-secondary-color p-16 flex flex-col gap-6">
-      <div id="first-col" className="flex gap-4 justify-between flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+      <div
+        id="first-col"
+        className="flex gap-4 justify-between flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8"
+      >
         <div className="flex flex-col gap-2 w-[29ch]">
-          <h3 className="text-lg text-white font-bold">Estemos en contacto</h3>
+          <h3 className="text-lg text-white font-bold">MultiShop</h3>
           <p className="text-[#ddd] font-light">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-            consequatur dolores vero, deserunt temporibus reprehenderit dicta
-            perspiciatis sequi.
+            ¡Únete a la comunidad de Multishop y vive la emoción de comprar en
+            línea de manera conveniente y asequible! Tu destino en línea para
+            encontrar lo que buscas
           </p>
           <div id="social-net"></div>
         </div>
@@ -17,16 +20,16 @@ export default function Footer() {
           </h3>
           <ul className="text-white">
             <li>
-              <a href="">Sobre Nosotros</a>
+              <a href="#">Sobre Nosotros</a>
             </li>
             <li>
-              <a href="">Carrera</a>
+              <a href="#">Carrera</a>
             </li>
             <li>
-              <a href="">Estamos contratando</a>
+              <a href="#">Estamos contratando</a>
             </li>
             <li>
-              <a href="">Blog</a>
+              <a href="#">Blog</a>
             </li>
           </ul>
         </div>
