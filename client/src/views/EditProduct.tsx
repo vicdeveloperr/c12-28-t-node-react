@@ -7,6 +7,7 @@ import Input from "../components/common/Input";
 import { useCategoriesStore } from "../stateManagemet/useCategoriesStore";
 import { Product } from "../types/ProductType";
 import { SERVER_URL } from "../utils/constants";
+import SideBarNav from "../components/common/SideBarNav";
 
 function Detail() {
   const [isSelected, setIsSelected] = useState(false);
@@ -115,6 +116,7 @@ function Detail() {
   return (
     <section>
       <Header />
+      <SideBarNav />
       <div className="p-16">
         <h1 className="text-h3 text-secondary-color font-extrabold mb-4">
           Vender producto

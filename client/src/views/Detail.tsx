@@ -6,11 +6,13 @@ import Button from "../components/common/Button";
 import { Carousel, Rating } from "flowbite-react";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SideBarNav from "../components/common/SideBarNav";
 
 function Detail() {
   return (
       <>
           <Header />
+          <SideBarNav />
           <div className="mt-20 px-4 md:px-16">
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
               <div className="w-full md:w-1/2 h-96 p-4">
