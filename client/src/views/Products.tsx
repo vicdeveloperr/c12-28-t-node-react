@@ -11,7 +11,7 @@ import Button from "../components/common/Button";
 
 export default function Products() {
   const products = useProductStore(state => state.searchProducts);
-  console.log(products);
+
   return (
     <>
       <TopBar />

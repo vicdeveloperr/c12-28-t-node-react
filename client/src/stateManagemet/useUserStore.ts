@@ -1,17 +1,9 @@
 import { create } from 'zustand'
 import loadUserData from '../utils/loadUserData';
-
-interface User {  
-  user: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  phone: number;
-  role: { name: string };
-}
+import { TypeUser } from '../types/types';
 
 interface UserStore {
-  userData: User;
+  userData: TypeUser;
 }
 
 export const useUserStore = create<UserStore>()(() => {

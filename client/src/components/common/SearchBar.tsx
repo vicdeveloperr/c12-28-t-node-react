@@ -24,13 +24,12 @@ function SearchBar() {
         value={search}
         onChange={e => {
           setSearch(e.target.value);
-          navigate("/products");
         }}
       />
       <select
         className="py-2 px-1 focus:outline-none bg-white-color border-l-2 border-primary-color min-w-0 flex-shrink-0"
-        onClick={e => {
-          console.log(e);
+        onChange={(e) => {
+          setSearch(e.target.value);
         }}
       >
         <option>Categoria</option>
@@ -40,7 +39,10 @@ function SearchBar() {
           </option>
         ))}
       </select>
-      <button className="bg-primary-color p-3 rounded-r flex-shrink-0">
+      <button onClick={e => {
+        e.preventDefault();
+        navigate("/products")
+      }} className="bg-primary-color p-3 rounded-r flex-shrink-0">
         <FontAwesomeIcon className="text-white" icon={faMagnifyingGlass} />
       </button>
     </form>

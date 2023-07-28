@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "../components/layouts/Header";
 import Footer from "../components/common/Footer";
 import Input from "../components/common/Input";
+import type { TypeUser } from "../types/types";
 
 import { useCategoriesStore } from "../stateManagemet/useCategoriesStore";
 import { Product } from "../types/ProductType";
@@ -88,9 +89,9 @@ function Detail() {
       c => product.category.name === c.name
     );
     const idCategoryProduct = productCategory?.idCategory;
-    const userSession = localStorage.getItem("user-storage");
+    const userSession = localStorage.getItem("userData") as string;
     const userParsed = JSON.parse(userSession);
-    const idUserProduct = userParsed.state.user.idUser;
+    const idUserProduct = userParsed.idUser;
     const userProduct = { ...product, idUserProduct, idCategoryProduct };
     console.log(userProduct);
     try {
@@ -100,14 +101,15 @@ function Detail() {
         headers: {
           "Content-Type": "application/json",
         },
-      }).then(res => {
-        if (res.statusText === "OK") {
-          setDefault();
-          setIsSelected(false);
-        } else {
-          console.error(res.statusText);
-        }
-      });
+      })
+        .then(res => {
+          if (res.statusText === "OK") {
+            setDefault();
+            setIsSelected(false);
+          } else {
+            console.error(res.statusText);
+          }
+        });
     } catch (error) {
       console.error(error);
     }
