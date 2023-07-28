@@ -65,7 +65,7 @@ function SideBarNav() {
           linkName="Favoritos"
         />
         <NavItem
-          targetUrl="/home"
+          targetUrl="/"
           iconComponent={
             <FontAwesomeIcon className="text-primary-color" icon={faHouse} />
           }

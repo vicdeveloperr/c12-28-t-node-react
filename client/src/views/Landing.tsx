@@ -3,6 +3,7 @@ import TopBar from "../components/common/TopBar";
 import ProductCard from "../components/common/ProductCard";
 import Girl from "../assets/technology 1.png";
 import SideBarNav from "../components/common/SideBarNav";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (
@@ -19,9 +20,11 @@ export default function Landing() {
           <p className="text-base lg:text-lg xl:text-xl text-gray-600 w-full lg:w-[50ch] font-light">
             Bienvenido a la plataforma donde encontrarás tus productos favoritos y el mejor servicio
           </p>
+          <Link to="/products">
           <button className="rounded-md p-3 lg:p-4 bg-primary-color hover:opacity-80 text-white w-full lg:max-w-[10em] transition-opacity">
-            Ver Ofertas
+            Ver productos
           </button>
+          </Link>
         </div>
         <div className="w-full lg:w-1/2 h-auto">
           <img className="w-full h-auto" src={Girl} alt="" />

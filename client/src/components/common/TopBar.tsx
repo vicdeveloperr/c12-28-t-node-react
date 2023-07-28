@@ -3,6 +3,7 @@ import { faMagnifyingGlass, faBars } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./SearchBar";
 import Container from "./Container";
 import { create } from "zustand";
+import { Link } from "react-router-dom";
 
 type elementsInTopBarElement =
   | "sideBarNavToglerElement"
@@ -72,9 +73,10 @@ function TopBar() {
       <Container>
         <div className="flex justify-between items-center">
           {logoElement ? (
-            <h3 id="logo" className="text-[32px] font-bold">
-              BrandName
-            </h3>
+            <Link to="/">
+            <h3 id="logo" className="text-[32px] font-bold text-secondary-color">
+              MultiShop
+            </h3></Link>
           ) : (
             <></>
           )}
