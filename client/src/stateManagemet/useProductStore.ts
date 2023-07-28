@@ -6,17 +6,17 @@ import { Product } from "../types/ProductType";
 
 interface ProductStore {
   product: Product;
-  products: Product[];
-  productsByCategory: Product[];
+  allProducts: Product[];
+  searchProducts: Product[];
   search: string;
-  setProducts: (products: Product) => void
+  setProducts: (products: Product[]) => void
   setSearch: (search: string) => void;
   createProduct: (product: Product) => void;
 }
 
 const searchAndSortProducts = (products: Product[], search: string) =>
   products
-    .filter(product => product.category.name.includes(search.toLowerCase()))
+    .filter(product => product.category.name.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => a.category.name.localeCompare(b.category.name))
 
 export const useProductStore = create(persist<ProductStore>((set, get) => ({
@@ -32,20 +32,21 @@ export const useProductStore = create(persist<ProductStore>((set, get) => ({
     topic_1: "",
     detail_1: ""
   },
-  products: [],
-  productsByCategory: [],
+  allProducts: [],
+  searchProducts: [],
   search: "",
 
   setProducts: (products) => {
     set({
-      products: [...products]
+      allProducts: products,
+      searchProducts: searchAndSortProducts(products, get().search)
     })
   },
   setSearch: (search) => {
-    set({ search, products: searchAndSortProducts(get().products, search) })
+    set({ search, searchProducts: searchAndSortProducts(get().allProducts, search) })
   },
   createProduct: (product) => {
-    set({ products: [...get().products, { ...product }] })
+    set({ allProducts: [...get().allProducts, { ...product }] })
   }
 }), {
   name: "products-storage",
