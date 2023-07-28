@@ -1,4 +1,5 @@
-import Header from "../components/layouts/Header";
+import TopBar from "../components/common/TopBar";
+import SideBarNav from "../components/common/SideBarNav";
 import Footer from "../components/common/Footer";
 import ProductCard from "../components/common/ProductCard";
 
@@ -10,11 +11,11 @@ export default function Products() {
   console.log(products);
   return (
     <>
-      <Header />
+      <TopBar />
       <SideBarNav />
       <div className="mt-16  px-16">
         <div>
-          <h1 className="text-h3r text-secondary-color font-extrabold mb-4">
+          <h1 className="text-h3 text-secondary-color font-extrabold mb-4">
             Productos
           </h1>
         </div>
@@ -29,8 +30,9 @@ export default function Products() {
                 description={product.description}
                 price={product.price}
                 stock={product.stock}
+                category={product.category.name}
               />
-            ))
+          ))
           ) : (
             <div>
               <div className="flex flex-col gap-2 w-[50ch] py-20">

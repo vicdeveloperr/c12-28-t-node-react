@@ -8,6 +8,7 @@ export default function ProductCard({
   description,
   price,
   stock,
+  category
 }: {
   id: number;
   name: string;
@@ -15,6 +16,7 @@ export default function ProductCard({
   description: string;
   price: number;
   stock: number;
+  category: string
 }) {
   return (
     <div className="rounded-md bg-white w-80 shadow-sm hover:bg-blue-100 text-left">
@@ -27,12 +29,12 @@ export default function ProductCard({
         className="rounded-t-md"
       />
       <div className="flex flex-col p-4">
-        <h5 className="text-primary-color font-medium">Categoría</h5>
+        <h5 className="text-primary-color font-medium">{category}</h5>
         <h4 className="text-secondary-color font-bold text-h3">{name}</h4>
         <p className="font-light my-3">{description}</p>
         <p className="font-medium text-secondary-color">{stock} Disponibles</p>
         <h6 className="text-secondary-color font-bold text-h4">${price}</h6>
-        <Link to="/detail">
+        <Link to={`/detail/${id}`}>
           <Button color="primary-color">Ver más</Button>
         </Link>
       </div>
