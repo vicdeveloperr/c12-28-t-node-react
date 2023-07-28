@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Product } from "../types/ProductType";
-import { SERVER_URL } from "../utils/constants";
 
 export interface CartItem {
   product: Product;

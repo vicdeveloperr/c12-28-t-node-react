@@ -11,12 +11,12 @@ interface Category {
 
 interface CategoryState {
   categories: Category[];
-  setCategories: (data: Category) => void;
+  setCategories: (data: Array<Category>) => void;
 }
 
-export const useCategoriesStore = create<CategoryState>((set, get) => ({
+export const useCategoriesStore = create<CategoryState>((set) => ({
   categories: [],
-  setCategories: (data) => {
+  setCategories: (data: Array<Category>) => {
     set({ categories: [...data] }, false)
   },
 

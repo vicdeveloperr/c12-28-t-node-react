@@ -33,7 +33,7 @@ export default function Products() {
               <ProductCard
                 key={product.idProduct}
                 id={product.idProduct}
-                img={product?.photos[0]?.name}
+                img={product.photos ? product?.photos[0]?.name : ""}
                 name={product.name}
                 description={product.description}
                 price={product.price}

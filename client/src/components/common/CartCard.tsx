@@ -14,8 +14,10 @@ interface CartCardProps {
     const removeFromCart = useCartStore((state) => state.removeFromCart);
 
     const handleRemoveItem = () => {
+      if(product.idProduct){
         removeFromCart(product.idProduct);
-      };
+      }
+    };
 
     return (
       <div className="rounded-md bg-white w-96 shadow-sm hover:bg-blue-100 text-left">

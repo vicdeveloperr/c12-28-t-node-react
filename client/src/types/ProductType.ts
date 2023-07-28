@@ -1,5 +1,5 @@
 export interface Product {
-  idProduct?: number;
+  idProduct: number;
   name: string;
   description: string;
   stock: number;
@@ -27,5 +27,6 @@ export interface Product {
     {
       name: string;
     }
-  ]
+  ];
+  [index: string]: string | number | undefined | Product["photos"] | Product["category"];
 }

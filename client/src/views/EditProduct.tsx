@@ -3,7 +3,6 @@ import { useState } from "react";
 import Header from "../components/layouts/Header";
 import Footer from "../components/common/Footer";
 import Input from "../components/common/Input";
-import type { TypeUser } from "../types/types";
 
 import { useCategoriesStore } from "../stateManagemet/useCategoriesStore";
 import { Product } from "../types/ProductType";
@@ -16,6 +15,7 @@ function Detail() {
     image: null,
   });
   const [product, setProduct] = useState<Product>({
+    idProduct: 0,
     name: "",
     description: "",
     price: 0,
@@ -31,6 +31,7 @@ function Detail() {
 
   const setDefault = () => {
     setProduct({
+      idProduct: 0,
       name: "",
       description: "",
       price: 0,
@@ -45,7 +46,7 @@ function Detail() {
     setIsSelected(false);
   };
 
-  const handleUploadImage = file => {
+  const handleUploadImage = (file: any) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append(
@@ -82,7 +83,7 @@ function Detail() {
       .catch(err => console.error(err));
   };
 
-  const handleOnSubmit = e => {
+  const handleOnSubmit = (e: any) => {
     e.preventDefault();
 
     const productCategory = categories.find(
@@ -162,7 +163,7 @@ function Detail() {
                 name="product-image"
                 onChange={event => {
                   setIsSelected(true);
-                  let img = event.target.files[0];
+                  const img = event.target.files ? event.target.files[0] : undefined;
                   setSelectedImage({ image: img });
                   console.log(img);
                 }}
@@ -199,7 +200,7 @@ function Detail() {
                 color="secondary-color"
                 inputId="product-price"
                 inputName="product-price"
-                value={product.price}
+                value={`${product.price}`}
                 handler={e =>
                   setProduct({
                     ...product,
@@ -327,7 +328,7 @@ function Detail() {
                 handler={e =>
                   setProduct({
                     ...product,
-                    stock: e.target.value,
+                    stock: Number(e.target.value),
                   })
                 }
               />

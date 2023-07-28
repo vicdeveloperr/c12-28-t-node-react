@@ -4,8 +4,10 @@ import ProductCard from "../components/common/ProductCard";
 import Girl from "../assets/technology 1.png";
 import SideBarNav from "../components/common/SideBarNav";
 import { Link } from "react-router-dom";
+import { useProductStore } from "../stateManagemet/useProductStore";
 
 export default function Landing() {
+  const { allProducts } = useProductStore(state => state);
   return (
     <div className="">
       <TopBar />
@@ -44,9 +46,13 @@ export default function Landing() {
           </p>
           <div className="justify-center mx-auto">
           <div id="lista-ofertas" className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              {
+                allProducts.slice(0, 3).map(product => {
+                  return (
+                    <ProductCard category={product.category.name} description={product.description} id={product.idProduct} name={product.name} price={product.price} stock={product.stock} key={product.idProduct} />
+                  ); 
+                })
+              }
           </div>
           </div>
 

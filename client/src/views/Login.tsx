@@ -2,9 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-import Footer from "../components/common/Footer";
 import TopBar from "../components/common/TopBar";
-import { useUserStore } from "../stateManagemet/useUserStore";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -12,7 +10,6 @@ const Login = () => {
     password: "",
   });
 
-  const addUser = useUserStore(state => state.addUser);
   const navigate = useNavigate();
 
   const handleChange = (
@@ -35,7 +32,6 @@ const Login = () => {
     if (response.statusText === "OK") {
       const { token, user } = data;
       console.log(token);
-      addUser(user);
       localStorage.setItem("token", token);
       localStorage.setItem("userSession", user);
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;

@@ -12,7 +12,7 @@ export default function ProductCard({
 }: {
   id: number;
   name: string;
-  img: string;
+  img?: string;
   description: string;
   price: number;
   stock: number;

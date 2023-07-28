@@ -1,13 +1,11 @@
-import { create } from "zustand";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { useUserStore } from "../stateManagemet/useUserStore";
 
 import Input from "../components/common/Input";
 import SideBarNav from "../components/common/SideBarNav";
 import Header from "../components/layouts/Header";
 import Container from "../components/common/Container";
-import Button from "../components/common/Button";
 
 import fotoUser from "../assets/foto-de-perfil.webp";
 
