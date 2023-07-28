@@ -16,7 +16,7 @@ interface UserStore {
 
 export const useUserStore = create<UserStore>()(() => {
   loadUserData();
-  const loadUserDataStorage = JSON.parse(localStorage.userData);
+  const loadUserDataStorage = JSON.parse(localStorage.userData  as string);
   
   return ({
     userData: {
