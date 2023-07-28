@@ -7,7 +7,7 @@ interface User {
   firstName: string;
   lastName: string;
   phone: number;
-  role: string;
+  role: { name: string };
 }
 
 interface UserStore {
@@ -16,7 +16,7 @@ interface UserStore {
 
 export const useUserStore = create<UserStore>()(() => {
   loadUserData();
-  const loadUserDataStorage = JSON.parse(localStorage.userData);
+  const loadUserDataStorage = JSON.parse(localStorage.userData  as string);
   
   return ({
     userData: {
