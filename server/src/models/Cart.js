@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db');
-const Product = require('../models/Product');
-const User = require('../models/User');
+const User = require('./User');
 
 const Cart = db.define('cart', {
   idCart: {
@@ -10,15 +9,7 @@ const Cart = db.define('cart', {
     autoIncrement: true,
     primaryKey: true
   },
-  idProduct: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
   idUser: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  amount: {
     type: DataTypes.INTEGER,
     allowNull: false
   }
@@ -32,9 +23,5 @@ const Cart = db.define('cart', {
 Cart.belongsTo(User, {
   foreignKey: 'idUser',
 });
-
-Cart.belongsTo(Product, {
-  foreignKey: 'idProduct'
-})
 
 module.exports = Cart;

@@ -241,7 +241,17 @@ const preloadData = async () => {
         detail_1: 'detail 1',
         idCategoryProduct: 4,
         idUserProduct: 2,
-        idPhoto: [6,7,8]
+        photos: [
+          {
+            name: 'https://ruta.com/S23-1.jpg'
+          },
+          {
+            name: 'https://ruta.com/S23-2.jpg'
+          },
+          {
+            name: 'https://ruta.com/S23-3.jpg'
+          }
+        ]
       },
       {
         name: 'Monitor LG 23" ',
