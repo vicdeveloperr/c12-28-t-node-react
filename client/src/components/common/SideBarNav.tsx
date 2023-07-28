@@ -1,4 +1,4 @@
-import fotoUser from "../../assets/foto-de-perfil.png";
+import fotoUser from "../../assets/foto-de-perfil.webp";
 import {
   faHouse,
   faArrowRightFromBracket,
