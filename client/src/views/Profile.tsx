@@ -9,7 +9,7 @@ import Header from "../components/layouts/Header";
 import Container from "../components/common/Container";
 import Button from "../components/common/Button";
 
-import fotoUser from "../assets/foto-de-perfil.png";
+import fotoUser from "../assets/foto-de-perfil.webp";
 
 function Profile() {
   const { userData } = useUserStore(state => state);
