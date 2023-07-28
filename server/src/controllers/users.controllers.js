@@ -53,7 +53,7 @@ const getUser = async (req, res) => {
 };
 
 const getUserByEmail = async (req, res) => {
-  const { email } = req.params;
+  const { email } = req.query;
 
   try {
     const userfound = await User.findOne({

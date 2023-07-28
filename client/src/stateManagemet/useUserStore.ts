@@ -7,7 +7,7 @@ interface User {
   firstName: string;
   lastName: string;
   phone: number;
-  role: string;
+  role: { name: string };
 }
 
 interface UserStore {

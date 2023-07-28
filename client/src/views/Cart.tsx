@@ -1,11 +1,13 @@
 import Header from "../components/layouts/Header";
 import Footer from "../components/common/Footer";
+import SideBarNav from "../components/common/SideBarNav";
 //import CartCard from "../components/common/CartCard";
 
 function Cart() {
   return (
     <>
       <Header />
+      <SideBarNav />
       <div className="mt-20 px-4 md:px-8 lg:px-16">
         <h1 className="text-h3 text-secondary-color font-extrabold mb-4">
           Carrito
