@@ -4,6 +4,7 @@ import Footer from "../components/common/Footer";
 import ProductCard from "../components/common/ProductCard";
 
 import { useProductStore } from "../stateManagemet/useProductStore";
+import SideBarNav from "../components/common/SideBarNav";
 
 export default function Products() {
   const products = useProductStore(state => state.searchProducts);

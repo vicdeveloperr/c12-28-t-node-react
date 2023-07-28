@@ -1,6 +1,6 @@
 import fotoUser from "../../assets/foto-de-perfil.webp";
 import {
-  faHouse,
+  faStore,
   faArrowRightFromBracket,
   faCartShopping,
   faUser,
@@ -65,11 +65,11 @@ function SideBarNav() {
           linkName="Favoritos"
         />
         <NavItem
-          targetUrl="/"
+          targetUrl="/products"
           iconComponent={
-            <FontAwesomeIcon className="text-primary-color" icon={faHouse} />
+            <FontAwesomeIcon icon={faStore} className="text-primary-color" />
           }
-          linkName="Inicio"
+          linkName="Productos"
         />
       </nav>
       <button className="text-nav-items">
